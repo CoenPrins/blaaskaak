@@ -1,0 +1,10 @@
+on:
+  schedule:
+    # run every day on 4:42
+    - cron:  '42 4 * * *'
+
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    run: |
+      echo hi
