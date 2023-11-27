@@ -2,7 +2,7 @@ name: Refresh Calendar
 
 on:
   schedule:
-    - cron: '42 4 * * *'
+    - cron: '26 16 * * *'
 
 permissions:
   contents: read
