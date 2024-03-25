@@ -1,8 +1,8 @@
-function show(events) {
+function show(eventData) {
 	const template = document.querySelector("#event-template");
 	const eventListElement = document.querySelector("#events");
 
-	for (let event of events) {
+	for (let event of eventData.events) {
 		const clone = template.content.cloneNode(true);
 
 		const date = new Date(event.begin);
@@ -16,9 +16,12 @@ function show(events) {
 
 		eventListElement.appendChild(clone);
 	}
+
+	const lastUpdate = new Date(eventData.metadata.generated).toLocaleString();
+	document.querySelector("#events-updated").textContent += lastUpdate;
 }
 
-fetch("/events.json")
+fetch("events.json")
 .then(response => {
 	if (!response.ok) {
 		throw new Error("HTTP error " + response.status);
@@ -26,5 +29,5 @@ fetch("/events.json")
 	return response.json();
 })
 .then(json => {
-	show(json.events);
+	show(json);
 })

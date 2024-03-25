@@ -96,6 +96,6 @@
 /* 	background-color: #621e66; */
 /* } */
 
-.event-details:hover h1 {
+#events li:hover h1 {
 	color: #621e66;
 }
