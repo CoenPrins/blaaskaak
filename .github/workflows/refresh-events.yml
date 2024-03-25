@@ -10,7 +10,7 @@ on:
 
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -25,3 +25,8 @@ jobs:
         cd scripts
         pip install -r requirements.txt
         python3 ical2json.py
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Refresh calendar
+        file_pattern: events.json
+        push_options: '--force'
