@@ -1,5 +1,4 @@
 name: Refresh Calendar
-workflow_dispatch: true
 
 env:
   $ics_url: ${{ vars.ICS_URL }}
@@ -7,6 +6,8 @@ env:
 on:
   schedule:
     - cron: '32 15 * * *'
+  workflow_dispatch:    # Allows manual triggering
+
 
 permissions:
   contents: read
