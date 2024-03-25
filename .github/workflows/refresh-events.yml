@@ -1,7 +1,7 @@
 name: Refresh Calendar
 
 env:
-  $ics_url: ${{ vars.ICS_URL }}
+  ICS_URL: "https://calendar.google.com/calendar/ical/85a09eba4aa7ae5eed2b0afa2440e470852d78b0dbf9828f3d0df073e0dab21b%40group.calendar.google.com/public/basic.ics"
 
 on:
   schedule:
@@ -24,4 +24,4 @@ jobs:
     - run: |
         cd scripts
         pip install -r requirements.txt
-        ICS_URL=$ics_url python3 ical2json.py
+        python3 ical2json.py
