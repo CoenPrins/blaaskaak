@@ -1,4 +1,5 @@
 name: Refresh Calendar
+workflow_dispatch: true
 
 env:
   $ics_url: ${{ vars.ICS_URL }}
