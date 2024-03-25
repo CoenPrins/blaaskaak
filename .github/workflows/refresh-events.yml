@@ -21,6 +21,7 @@ jobs:
       with:
         python-version: '3.11'
         cache: 'pip'
+    - name: Sync Google Calendar
     - run: |
         cd scripts
         pip install -r requirements.txt
@@ -30,3 +31,5 @@ jobs:
         commit_message: Refresh calendar
         file_pattern: events.json
         push_options: '--force'
+        branch: build
+        create_branch: true
