@@ -1,20 +1,10 @@
-body {
-	background-color: lightblue;
-	color: white;
-	font-weight: bold;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-}
-
 .list-container {
 	padding: 1em;
-	max-width: 80%;
 	font-family: 'FontSite Sans', sans-serif;
 	background: white;
 }
 
-ul.scale-up-hover-list {
+.scale-up-hover-list {
 	padding-left: .1em;
 	width: 95%;
 	list-style-type: none;
@@ -55,7 +45,7 @@ ul.scale-up-hover-list {
 	transform: scale(1.025, 1.025);
 }
 
-.scale-up-hover-list li .date {
+.event-date {
 	float: left;
 	margin-right: 1em;
 	max-width: 20%;
@@ -65,7 +55,7 @@ ul.scale-up-hover-list {
 
 }
 
-.scale-up-hover-list li .date .day {
+.event-day {
 	display: block;
 	margin: .25em 0;
 	font-size: 1.5em;
@@ -73,14 +63,14 @@ ul.scale-up-hover-list {
 	font-weight: 800;
 }
 
-.scale-up-hover-list li .date .month {
+.event-month {
 	display: block;
 	margin: .005em 0;
 	font-size: 1.2em;
 	font-weight: 200;
 }
 
-.scale-up-hover-list li .event-details h1 {
+.event-details h1 {
 	display: block;
 	margin-top: 0;
 	margin-bottom: 0.4em;
@@ -93,7 +83,7 @@ ul.scale-up-hover-list {
 	transition: all 0.2s ease;
 }
 
-.scale-up-hover-list li .event-details p.event-description {
+.event-description, .event-location {
 	display: block;
 	margin: 0;
 	margin-top: .05em;
@@ -102,10 +92,10 @@ ul.scale-up-hover-list {
 	font-size: 0.75em;
 }
 
-/* .scale-up-hover-list li:hover .date { */
+/* .scale-up-hover-list li:hover .event-date { */
 /* 	background-color: #621e66; */
 /* } */
 
-.scale-up-hover-list li:hover .event-details h1 {
+.event-details:hover h1 {
 	color: #621e66;
 }

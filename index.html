@@ -4,28 +4,29 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Blaaskaak</title>
-		<link href="style.css" rel="stylesheet">
-		<script src="ical.js"></script>
-		<script src="calendar.js"></script>
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/event-list.css" rel="stylesheet">
+		<script src="js/calendar.js"></script>
 	</head>
 	<body>
-		<h1>Blaaskaak</h1>
+		<h1>Blaaskaak 🎷🥁🎺</h1>
 		<div class="list-container">
 			<ul id="events" class="scale-up-hover-list">
 				
 			</ul>
 		</div>
 
-		<template id="event-row-template">
+		<template id="event-template">
           <li>
             <!-- <a href="#" target="_blank"> -->
-              <div class="date">
-                <p class="day">23</p>
-                <p class="month">nov</p>
+              <div class="event-date">
+                <p class="event-day">23</p>
+                <p class="event-month">nov</p>
               </div>
-              <div class="item-details event-details">
+              <div class="event-details">
                 <h1 class="event-title"></h1>
-                <p class="item-description event-description">
+                <p class="event-location">
+                <p class="event-description">
                 </p>
               </div>
             <!-- </a> -->
