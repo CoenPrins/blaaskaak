@@ -21,6 +21,7 @@ jobs:
       with:
         python-version: '3.11'
         cache: 'pip'
-    - run: 'cd scripts'
-    - run: 'pip install -r requirements.txt'
-    - run: 'ICS_URL=$ics_url python3 ical2json.py'
+    - run: |
+        cd scripts
+        pip install -r requirements.txt
+        ICS_URL=$ics_url python3 ical2json.py
