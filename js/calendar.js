@@ -17,7 +17,7 @@ function show(eventData) {
 		eventListElement.appendChild(clone);
 	}
 
-	const lastUpdate = new Date(eventData.metadata.generated).toLocaleString();
+	const lastUpdate = new Date(eventData.metadata.generated).toLocaleString('nl-NL');
 	document.querySelector("#events-updated").textContent += lastUpdate;
 }
 
