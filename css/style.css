@@ -1,6 +1,14 @@
+:root {
+	--color-main: white;
+}
+
+* {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 body {
 	background-color: lightblue;
-	color: white;
+	color: var(--color-main);
 	height: 100vh;
 	width: 90%;
 	margin: 0 auto;
@@ -8,4 +16,39 @@ body {
 
 body > h1 {
 	text-align: center;
+}
+
+
+/* NAVIGATION BAR */
+nav {
+	width: fit-content;
+	margin: 0 auto;
+	margin-bottom: 4em;
+}
+
+nav ol {
+	padding: 0;
+	margin: 0;
+	text-transform: uppercase;
+}
+
+nav ol li {
+	display: inline-block;
+	margin: 0;
+}
+
+nav ol li:not(:last-child) {
+	margin-right: 30px;
+	color: var(--color-main);
+	border-right: 1px solid white;
+	padding-right: 30px;
+}
+
+nav ol li a {
+	color: var(--color-main);
+	text-decoration: none;
+}
+
+nav ol li a:hover {
+	text-decoration: underline;
 }
