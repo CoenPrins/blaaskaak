@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="nl">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Blaaskaak</title>
-		<link href="css/style.css" rel="stylesheet">
-		<link href="css/event-list.css" rel="stylesheet">
-		<script src="js/calendar.js"></script>
-	</head>
-	<body>
-		<h1>Blaaskaak 🎷🥁🎺</h1>
-		<div class="list-container">
-			<ul id="events" class="scale-up-hover-list"></ul>
-		</div>
-		<div id="events-updated">Last updated:</div>
 
-		<template id="event-template">
-          <li>
-            <!-- <a href="#" target="_blank"> -->
-              <div class="event-date">
-                <p class="event-day"></p>
-                <p class="event-month"></p>
-              </div>
-              <div class="event-details">
-                <h1 class="event-title"></h1>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Blaaskaak</title>
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/event-list.css" rel="stylesheet">
+	<script src="js/calendar.js"></script>
+</head>
+
+<body>
+	<h1>Blaaskaak 🎷🥁🎺</h1>
+	<div class="list-container">
+		<ul id="events" class="scale-up-hover-list"></ul>
+	</div>
+	<div id="events-updated">Last updated:</div>
+
+	<template id="event-template">
+		<li>
+			<!-- <a href="#" target="_blank"> -->
+			<div class="event-date">
+				<p class="event-day"></p>
+				<p class="event-month"></p>
+			</div>
+			<div class="event-details">
+				<h1 class="event-title"></h1>
 				<p class="event-location"></p>
-                <p class="event-description"></p>
-              </div>
-            <!-- </a> -->
-          </li>
-		</template>
+				<p class="event-description"></p>
+			</div>
+			<!-- </a> -->
+		</li>
+	</template>
+</body>
+</html>
