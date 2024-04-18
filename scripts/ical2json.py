@@ -49,7 +49,7 @@ def write_json(events: list[dict[str, str | None]], filename: str) -> None:
                 {
                     "metadata": {
                         "generated": datetime.datetime.utcnow().isoformat(),
-                        # you can add more metadata if you want here
+                        # NOTE: you can add more metadata if you want here
                     },
                     "events": events,
                 }
