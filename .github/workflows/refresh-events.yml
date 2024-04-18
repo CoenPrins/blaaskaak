@@ -4,14 +4,17 @@ env:
   ICS_URL: "https://calendar.google.com/calendar/ical/85a09eba4aa7ae5eed2b0afa2440e470852d78b0dbf9828f3d0df073e0dab21b%40group.calendar.google.com/public/basic.ics"
 
 on:
+  # every push to main results in a run of this workflow
   push:
     branches:
       - main
+  # but is also runs everyday at 15:32 (not exact)
   schedule:
     - cron: '32 15 * * *'
+  # and can be run manually
   workflow_dispatch:    # Allows manual triggering
 
-
+# allow this workflow to write (to the build branch)
 permissions:
   contents: write
 
@@ -19,15 +22,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+    - uses: actions/checkout@v4  # to get the repo code
+    - uses: actions/setup-python@v5  # install python and cache pip improves runtime
       with:
         python-version: '3.11'
         cache: 'pip'
+    # the magic, running the script
     - run: |
         cd scripts
         pip install -r requirements.txt
         python3 ical2json.py
+    # and commit the new events.json to the build branch
     - uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Refresh calendar
