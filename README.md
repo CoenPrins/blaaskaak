@@ -24,7 +24,7 @@ Couple of ideas to keep it clean:
 The information about gigs is pulled from Google Calendar, based on a schedule
 (currently once a day). This is done using Github Actions, and the action is
 defined in
-[`./.github/workflows/refresh-events.yml`](./.github/workflows/refresh-events.yml.).
+[`./.github/workflows/refresh-events.yml`](./.github/workflows/refresh-events.yml).
 It also includes comments to explain the steps.
 
 It runs on:
