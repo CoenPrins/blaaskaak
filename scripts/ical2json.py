@@ -5,6 +5,8 @@ import os
 import sys
 from urllib.request import urlopen
 
+from pathlib import Path
+
 import ics
 
 
@@ -12,8 +14,8 @@ def request_ics_calendar() -> ics.icalendar.Calendar:
     try:
         ics_url = os.environ["ICS_URL"]
     except KeyError:
-        print("ical2json: environment variable ICS_URL not set", file=sys.stdout)
-        print('ical2json: set using `export ICS_URL="<google_url>"`', file=sys.stdout)
+        print("ical2json: environment variable ICS_URL not set", file=sys.stderr)
+        print('ical2json: set using `export ICS_URL="<google_url>"`', file=sys.stderr)
         sys.exit(1)
 
     with urlopen(ics_url) as response:
@@ -43,12 +45,15 @@ def convert_ics(ical: ics.icalendar.Calendar) -> list[dict[str, str | None]]:
 
 
 def write_json(events: list[dict[str, str | None]], filename: str) -> None:
-    with open(filename, "w") as f:
+    fn = Path(filename)
+    fn.parent.mkdir(exist_ok=True)
+
+    with open(fn, "w") as f:
         f.write(
             json.dumps(
                 {
                     "metadata": {
-                        "generated": datetime.datetime.utcnow().isoformat(),
+                        "generated": datetime.datetime.now().isoformat(),
                         # NOTE: you can add more metadata if you want here
                     },
                     "events": events,
@@ -60,4 +65,10 @@ def write_json(events: list[dict[str, str | None]], filename: str) -> None:
 if __name__ == "__main__":
     ical = request_ics_calendar()
     events = convert_ics(ical)
-    write_json(events, filename="../events.json")
+
+    # if path is provided on command line
+    output_filename = "events.json"
+    if len(sys.argv) > 1:
+        output_filename = sys.argv[1]
+
+    write_json(events, filename=output_filename)

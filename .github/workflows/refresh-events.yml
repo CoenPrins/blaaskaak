@@ -12,31 +12,34 @@ on:
   schedule:
     - cron: '32 15 * * *'
   # and can be run manually
-  workflow_dispatch:    # Allows manual triggering
+  workflow_dispatch: # Allows manual triggering
 
-# allow this workflow to write (to the build branch)
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4  # to get the repo code
-    - uses: actions/setup-python@v5  # install python and cache pip improves runtime
+    - name: Checkout code from repository
+      uses: actions/checkout@v4
+    - name: Install python
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
         cache: 'pip'
     # the magic, running the script
-    - run: |
+    - name: Generate events.json from Google Calendar
+      run: |
         cd scripts
         pip install -r requirements.txt
-        python3 ical2json.py
-    # and commit the new events.json to the build branch
-    - uses: stefanzweifel/git-auto-commit-action@v5
+        python3 ical2json.py ../public/events.json
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        commit_message: Refresh calendar
-        file_pattern: events.json
-        push_options: '--force'
-        branch: build
-        create_branch: true
+        path: 'public/'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
