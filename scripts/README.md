@@ -10,9 +10,9 @@ It grabs the following fields from the ICS data format:
 - Notes (string)
 - URL (string) [not tested yet]
 
-The standard filename of the resulting json file is `"../events.json"`. This
-means that if you run `ical2json.py` in its folder (`/scripts`), the event.json
-file will be placed in the root of the repository.
+The standard filename of the resulting json file is `"events.json"`. This means
+that if you run `ical2json.py` in its folder (`scripts/`), the `event.json`
+file will be placed in the `scripts` folder.
 
 ## Requirements
 
@@ -32,8 +32,16 @@ export ICS_URL=https://calendar.google.com/your_ics_url
 
 ## Run
 
+Thus, to summarize, run this in your terminal (assuming Linux, otherwise go
+figure it out yourself):
+
 ```
-python3 ical2json.py
+export ICS_URL=https://calendar.google.com/your_ics_url
+cd scripts
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python3 ical2json.py ../public/events.json
 ```
 
 ## Output format
