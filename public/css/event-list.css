@@ -99,3 +99,7 @@
 #events li:hover h1 {
 	color: #621e66;
 }
+
+#events > li > a {
+	color: inherit;
+}

@@ -1,11 +1,20 @@
 function show(eventData) {
 	const template = document.querySelector("#event-template");
 	const eventListElement = document.querySelector("#events");
+	const today = new Date();
+	today.setHours(0, 0, 0);
+	console.log(today);
 
 	for (let event of eventData.events) {
 		const clone = template.content.cloneNode(true);
 
 		const date = new Date(event.begin);
+
+		// do not show past events
+		//if (date < today) {
+		//	continue;
+		//}
+
 		const month = date.toLocaleDateString('nl-NL', {month: 'long'})
 
 		clone.querySelector(".event-day").textContent = date.getDate();
@@ -13,6 +22,7 @@ function show(eventData) {
 		clone.querySelector(".event-title").textContent = event.name;
 		clone.querySelector(".event-location").textContent = event.location;
 		clone.querySelector(".event-description").textContent = event.description;
+		clone.querySelector(".event-url").setAttribute("href", event.url || "");
 
 		eventListElement.appendChild(clone);
 	}
