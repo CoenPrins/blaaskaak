@@ -1,9 +1,11 @@
 function show(eventData) {
 	const template = document.querySelector("#event-template");
+	if (!template) {
+		return;
+	}
 	const eventListElement = document.querySelector("#events");
 	const today = new Date();
 	today.setHours(0, 0, 0);
-	console.log(today);
 
 	for (let event of eventData.events) {
 		const clone = template.content.cloneNode(true);
