@@ -1,45 +1,45 @@
 function show(eventData) {
-	const template = document.querySelector("#event-template");
-	if (!template) {
-		return;
-	}
-	const eventListElement = document.querySelector("#events");
-	const today = new Date();
-	today.setHours(0, 0, 0);
+  const template = document.querySelector("#event-template");
+  if (!template) {
+    return;
+  }
+  const eventListElement = document.querySelector("#events");
+  const today = new Date();
+  today.setHours(0, 0, 0);
 
-	for (let event of eventData.events) {
-		const clone = template.content.cloneNode(true);
+  for (let event of eventData.events) {
+    const clone = template.content.cloneNode(true);
 
-		const date = new Date(event.begin);
+    const date = new Date(event.begin);
 
-		// do not show past events
-		//if (date < today) {
-		//	continue;
-		//}
+    // do not show past events
+    //if (date < today) {
+    //  continue;
+    //}
 
-		const month = date.toLocaleDateString('nl-NL', {month: 'long'})
+    const month = date.toLocaleDateString('nl-NL', {month: 'long'})
 
-		clone.querySelector(".event-day").textContent = date.getDate();
-		clone.querySelector(".event-month").textContent = month;
-		clone.querySelector(".event-title").textContent = event.name;
-		clone.querySelector(".event-location").textContent = event.location;
-		clone.querySelector(".event-description").textContent = event.description;
-		clone.querySelector(".event-url").setAttribute("href", event.url || "");
+    clone.querySelector(".event-day").textContent = date.getDate();
+    clone.querySelector(".event-month").textContent = month;
+    clone.querySelector(".event-title").textContent = event.name;
+    clone.querySelector(".event-location").textContent = event.location;
+    clone.querySelector(".event-description").textContent = event.description;
+    clone.querySelector(".event-url").setAttribute("href", event.url || "");
 
-		eventListElement.appendChild(clone);
-	}
+    eventListElement.appendChild(clone);
+  }
 
-	const lastUpdate = new Date(eventData.metadata.generated).toLocaleString('nl-NL');
-	document.querySelector("#events-updated").textContent += lastUpdate;
+  const lastUpdate = new Date(eventData.metadata.generated).toLocaleString('nl-NL');
+  document.querySelector("#events-updated").textContent += lastUpdate;
 }
 
 fetch("events.json")
 .then(response => {
-	if (!response.ok) {
-		throw new Error("HTTP error " + response.status);
-	}
-	return response.json();
+  if (!response.ok) {
+    throw new Error("HTTP error " + response.status);
+  }
+  return response.json();
 })
 .then(json => {
-	show(json);
+  show(json);
 })

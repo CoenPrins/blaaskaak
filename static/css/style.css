@@ -1,103 +1,103 @@
 :root {
-	--color-main: white;
+  --color-main: white;
 }
 
 * {
-	font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 }
 
 body {
-	background-color: lightblue;
-	color: var(--color-main);
-	height: 100vh;
-	width: 60%;
-	margin: 0 auto;
+  background-color: lightblue;
+  color: var(--color-main);
+  height: 100vh;
+  width: 60%;
+  margin: 0 auto;
 }
 
 body > h1 {
-	text-align: center;
-	text-transform: uppercase;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 
 /* NAVIGATION BAR */
 nav {
-	width: fit-content;
-	margin: 0 auto;
-	margin-bottom: 4em;
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 4em;
 }
 
 nav ol {
-	padding: 0;
-	margin: 0;
-	text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
 }
 
 nav ol li {
-	display: inline-block;
-	margin: 0;
+  display: inline-block;
+  margin: 0;
 }
 
 nav ol li:not(:last-child) {
-	margin-right: 30px;
-	color: var(--color-main);
-	border-right: 1px solid white;
-	padding-right: 30px;
+  margin-right: 30px;
+  color: var(--color-main);
+  border-right: 1px solid white;
+  padding-right: 30px;
 }
 
 nav ol li a {
-	color: var(--color-main);
-	text-decoration: none;
+  color: var(--color-main);
+  text-decoration: none;
 }
 
 nav ol li a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 nav li.current a {
-	&::before {
-		content: '→ ';
-	}
-	&::after {
-		content: ' ←';
-	}
-	/*&:hover {*/
-	/*	text-decoration: none;*/
-	/*}*/
+  &::before {
+    content: '→ ';
+  }
+  &::after {
+    content: ' ←';
+  }
+  /*&:hover {*/
+  /*  text-decoration: none;*/
+  /*}*/
 }
 
 a[href^="mailto:"]::before { 
-	content: '✉️ ';
-	user-select: none;
+  content: '✉️ ';
+  user-select: none;
 }
 
 .container {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
-	text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: center;
 }
 .container section {
-	padding: 20px;
+  padding: 20px;
 }
 .container h2 {
-	margin: 0;
-	font-size: 2em;
+  margin: 0;
+  font-size: 2em;
 }
 .container p {
-	margin: 5px 0;
-	font-size: 1em;
+  margin: 5px 0;
+  font-size: 1em;
 }
 .container a {
-	color: gray;
-	text-decoration: none;
+  color: gray;
+  text-decoration: none;
 }
 @media (max-width: 768px) {
-	.container {
-		grid-template-columns: 1fr;
-	}
+  .container {
+    grid-template-columns: 1fr;
+  }
 }
 
 p.emoji {
-	font-size: 4em;
+  font-size: 4em;
 }
