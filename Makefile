@@ -1,13 +1,12 @@
-.venv:
-	python3 -m venv .venv >/dev/null
+VENV := .venv
+export PATH := $(VENV)/bin:$(PATH)
 
-venv: .venv
-	. .venv/bin/activate
+$(VENV): scripts/requirements.txt
+	python3 -m venv $(VENV) >/dev/null
+	. $(VENV)/bin/activate
+	pip install -r scripts/requirements.txt >/dev/null
 
-requirements: venv
-	pip install -r scripts/requirements.txt
-
-calendar: requirements
+calendar: $(VENV)
 	python3 scripts/ical2json.py
 
 build:
@@ -20,6 +19,6 @@ clean:
 serve: build
 	python3 -m http.server 8000
 
-github: calendar build
+github-actions: calendar build
 
 .PHONY: clean venv build serve
