@@ -1,3 +1,4 @@
+import os
 import sys
 from pathlib import Path
 from string import Template
@@ -10,11 +11,11 @@ def clean_dir(directory: Path) -> None:
     if directory.is_absolute():
         sys.exit(f"ERROR: dangerous path '{directory}'. Not removing.")
 
-    for root, dirs, files in Path(directory).walk(top_down=False):
+    for root, dirs, files in os.walk(directory, topdown=False):
         for name in files:
-            (root / name).unlink()
+            Path(root, name).unlink()
         for name in dirs:
-            (root / name).rmdir()
+            Path(root, name).rmdir()
 
 
 def load_base(filename: Path) -> Template:
