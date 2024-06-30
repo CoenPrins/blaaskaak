@@ -1,27 +1,30 @@
 VENV := .venv
 BUILD := public
-export PATH := .:$(VENV)/bin:$(PATH)
+
+export PATH := $(VENV)/bin:$(PATH)
 SHELL := env PATH=$(PATH) /bin/bash
 
 $(VENV): requirements.txt
 	python3 -m venv $(VENV)
 	. $(VENV)/bin/activate
 	pip install --quiet --disable-pip-version-check --require-virtualenv -r requirements.txt
-	touch .venv
+	touch $(VENV)
 
-calendar:
-	python3 scripts/ical2json.py
+calendar: $(VENV)
+	python3 ical2json.py
 
-build:
+$(BUILD): pages static buildsite.py base.html
 	python3 buildsite.py
 
 clean:
-	-rm -rd $(VENV) >/dev/null 2>&1 || true
-	-rm -rd $(BUILD) >/dev/null 2>&1 || true
+	find . -path "./$(VENV)" -exec rm -rd {} +
+	find . -path "./$(BUILD)" -exec rm -rd {} +
 
-serve: build
-	python3 -m http.server 8000 --directory $(BUILD)
+serve: $(BUILD)
+	python3 liveserver.py
 
-all: calendar build
+site: $(BUILD)
+all: calendar site
 
-.PHONY: calendar build clean serve all
+.PHONY: calendar site clean serve all
+.DEFAULT_GOAL := site
