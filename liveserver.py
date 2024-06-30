@@ -1,26 +1,33 @@
-import http.server
-import socketserver
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+import subprocess
 from functools import partial
 
-DIRECTORY_TO_WATCH = "public"
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
+
 
 class RebuildHandler(FileSystemEventHandler):
     def on_any_event(self, event):
         print("Rebuilding the project...")
+        output = subprocess.run(
+            ["make", "site"], shell=True, capture_output=True, text=True
+        )
+        if output.stderr:
+            print(output.stderr)
+
 
 def run_server(port=8000):
-    handler = partial(http.server.SimpleHTTPRequestHandler, directory=DIRECTORY_TO_WATCH)
-    with socketserver.TCPServer(("", port), handler) as httpd:
-        print(f"Serving at port {port}")
+    handler = partial(SimpleHTTPRequestHandler, directory="public")
+
+    with HTTPServer(("", port), handler) as httpd:
+        print(f"Serving at http://localhost:{port}")
         httpd.serve_forever()
+
 
 if __name__ == "__main__":
     event_handler = RebuildHandler()
     observer = Observer()
-    observer.schedule(event_handler, path=DIRECTORY_TO_WATCH, recursive=True)
+    observer.schedule(event_handler, path=".", recursive=False)
     observer.start()
 
     try:

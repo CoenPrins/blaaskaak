@@ -36,7 +36,7 @@ def load_base(filename: Path) -> Template:
 
 def pagetitle(page_name: str) -> str:
     if page_name != "index":
-        return page_name.title().replace('-', ' ') + " | "
+        return page_name.title().replace("-", " ") + " | "
 
     return ""
 
