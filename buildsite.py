@@ -34,6 +34,13 @@ def load_base(filename: Path) -> Template:
     return Template(base)
 
 
+def pagetitle(page_name: str) -> str:
+    if page_name != "index":
+        return page_name.title().replace('-', ' ') + " | "
+
+    return ""
+
+
 def build_site(working_dir: str) -> None:
     cwd = Path(working_dir)
     public_dir = cwd / "public"
@@ -61,7 +68,7 @@ def build_site(working_dir: str) -> None:
     for page_file in Path(pages_dir).iterdir():
         content = page_file.read_text()
 
-        title = page_file.stem.capitalize() + " | "
+        title = pagetitle(page_file.stem)
 
         output = base_file.substitute(content=content, subtitle=title)
 
