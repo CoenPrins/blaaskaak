@@ -33,13 +33,15 @@ function show(eventData) {
   document.querySelector("#events-updated").textContent += lastUpdate;
 }
 
-fetch("events.json")
-.then(response => {
-  if (!response.ok) {
-    throw new Error("HTTP error " + response.status);
-  }
-  return response.json();
-})
-.then(json => {
-  show(json);
-})
+if (!document.querySelector("#event-template")) {
+  fetch("events.json")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("HTTP error " + response.status);
+      }
+      return response.json();
+    })
+    .then(json => {
+      show(json);
+    })
+}

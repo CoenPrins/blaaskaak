@@ -13,7 +13,7 @@ $(VENV): requirements.txt
 calendar: $(VENV)
 	$(PY) ical2json.py
 
-$(BUILD): $(VENV) pages static buildsite.py base.html
+site: $(VENV)
 	$(PY) buildsite.py
 
 clean:
@@ -25,7 +25,6 @@ serve: $(BUILD)
 
 # for easy CLI targets
 virtual-env: $(VENV)
-site: $(BUILD)
 all: calendar site
 
 .PHONY: calendar site clean serve virtual-env all
