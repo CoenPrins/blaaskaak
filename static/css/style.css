@@ -14,7 +14,7 @@ body {
   margin: 0 auto;
 }
 
-body > h1 {
+header > h1 {
   text-align: center;
   text-transform: uppercase;
 }
