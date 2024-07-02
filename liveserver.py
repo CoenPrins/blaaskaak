@@ -21,7 +21,7 @@ class RebuildHandler(FileSystemEventHandler):
 
     def process(self):
         self.timer = None
-        print('rebuilding website...')
+        print("rebuilding website...")
         output = subprocess.run(
             ["make", "site"], shell=True, capture_output=True, text=True
         )

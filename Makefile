@@ -7,7 +7,7 @@ PIP := $(VENV)/bin/pip
 $(VENV): requirements.txt
 	python3 -m venv $(VENV)
 	. $(VENV)/bin/activate
-	$(PIP) install --quiet --disable-pip-version-check --require-virtualenv -r requirements.txt
+	$(PIP) install --quiet --disable-pip-version-check -r requirements.txt
 	touch $(VENV)
 
 calendar: $(VENV)
