@@ -1,20 +1,22 @@
 :root {
-  --color-main: white;
+  --color-text: white;
+  --color-theme: lightblue;
 }
 
 * {
-  font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 }
 
 body {
-  background-color: lightblue;
-  color: var(--color-main);
+  background-color: var(--color-theme);
+  color: var(--color-text);
   height: 100vh;
   width: 90%;
   margin: 0 auto;
+  max-width: 100em;
 }
 
-header > h1 {
+header>h1 {
   text-align: center;
   text-transform: uppercase;
 }
@@ -27,69 +29,69 @@ nav {
   margin-bottom: 4em;
   width: 100%;
   max-width: 600px;
+
+  ol {
+    padding: 0;
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 80%;
+    border-top: 1.5px solid var(--color-text);
+    border-bottom: 1.5px solid var(--color-text);
+
+    li {
+      list-style: none;
+      text-align: center;
+      padding: .2em;
+
+      a {
+        color: var(--color-main);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    li.current a {
+      &::before {
+        display: inline-block;
+        content: '→';
+        padding-right: 0.5em;
+      }
+
+      &::after {
+        display: inline-block;
+        content: '←';
+        padding-left: 0.5em;
+      }
+    }
+  }
 }
 
-nav ol {
-  padding: 0;
-  margin: 0 auto;
-  text-transform: uppercase;
-  font-weight: bold;
-  width: 80%;
-  border-top: 1.5px solid white;
-  border-bottom: 1.5px solid white;
-}
-
-nav ol li {
-  list-style: none;
-  text-align: center;
-  padding: .2em;
-}
 
 @media (min-width: 450px) {
   nav ol {
     border: none;
     width: 100%;
-  }
-  nav ol li {
-    padding: 0;
-    display: inline-block;
-    margin: 0;
-    width: 32%;
-    text-align: center;
-  }
 
-  nav ol li:not(:last-child) {
-    color: var(--color-main);
-    border-right: 1.5px solid white;
+    li {
+      padding: 0;
+      display: inline-block;
+      margin: 0;
+      width: 32%;
+      text-align: center;
+
+      &:not(:last-child) {
+        color: var(--color-main);
+        border-right: 1.5px solid var(--color-text);
+      }
+    }
   }
 }
 
-nav ol li a {
-  color: var(--color-main);
-  text-decoration: none;
-}
-
-nav ol li a:hover {
-  text-decoration: underline;
-}
-
-nav li.current a {
-  &::before {
-    display: inline-block;
-    content: '→';
-    padding-right: 5px;
-  }
-  &::after {
-    display: inline-block;
-    content: '←';
-    padding-left: 5px;
-  }
-  /*&:hover {*/
-  /*  text-decoration: none;*/
-  /*}*/
-}
-
-a[href^="mailto:"]::before { 
+a[href^="mailto:"]::before {
   content: '✉️ ';
   user-select: none;
 }
@@ -99,22 +101,27 @@ a[href^="mailto:"]::before {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   text-align: center;
+
+  section {
+    padding: 20px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 2em;
+  }
+
+  p {
+    margin: 5px 0;
+    font-size: 1em;
+  }
+
+  a {
+    color: gray;
+    text-decoration: none;
+  }
 }
-.container section {
-  padding: 20px;
-}
-.container h2 {
-  margin: 0;
-  font-size: 2em;
-}
-.container p {
-  margin: 5px 0;
-  font-size: 1em;
-}
-.container a {
-  color: gray;
-  text-decoration: none;
-}
+
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
