@@ -35,13 +35,13 @@ def load_base(filename: Path) -> Template:
 
 
 def pagetitle(page_name: str) -> str:
-    if page_name != "index":
-        return page_name.title().replace("-", " ") + " | "
+    if page_name == "index":
+        return ""
 
-    return ""
+    return page_name.title().replace("-", " ") + " | "
 
 
-def build_site(working_dir: str) -> None:
+def build(working_dir: str) -> None:
     cwd = Path(working_dir)
     public_dir = cwd / "public"
     static_dir = cwd / "static"
@@ -51,7 +51,7 @@ def build_site(working_dir: str) -> None:
 
     clean_dir(public_dir)
 
-    # move all static files
+    # copy all static files
     for child in static_dir.iterdir():
         target = public_dir / child.name
         if child.is_dir():
@@ -70,7 +70,11 @@ def build_site(working_dir: str) -> None:
 
         title = pagetitle(page_file.stem)
 
-        output = base_file.substitute(content=content, subtitle=title)
+        # 'full' html pages don't need the base template
+        if content.startswith("<!DOCTYPE html>"):
+            output = content
+        else:
+            output = base_file.substitute(content=content, subtitle=title)
 
         target_file = public_dir / page_file.name
         target_file.write_text(output)
@@ -79,4 +83,4 @@ def build_site(working_dir: str) -> None:
 
 
 if __name__ == "__main__":
-    build_site(".")
+    build(".")
