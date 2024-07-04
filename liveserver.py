@@ -1,52 +1,52 @@
 from http.server import HTTPServer, SimpleHTTPRequestHandler
-import subprocess
-from functools import partial
+import contextlib as context
+import functools
+import os
+import sys
 import threading
+import time
+from typing import NoReturn, Generator
 
-from watchdog.events import FileSystemEventHandler
-from watchdog.observers import Observer
-
-
-class RebuildHandler(FileSystemEventHandler):
-    def __init__(self, timeout):
-        self.timeout = timeout
-        super().__init__()
-        self.timer = None
-
-    def on_any_event(self, event):
-        if self.timer:
-            return
-        self.timer = threading.Timer(self.timeout, self.process)
-        self.timer.start()
-
-    def process(self):
-        self.timer = None
-        print("rebuilding website...")
-        output = subprocess.run(
-            ["make", "site"], shell=True, capture_output=True, text=True
-        )
-        if output.stdout:
-            print(output.stdout)
-        if output.stderr:
-            print(output.stderr)
+import buildsite
 
 
-def run_server(port=8000):
-    handler = partial(SimpleHTTPRequestHandler, directory="public")
+def run_server(directory: str, port: int = 8000) -> None:
+    handler = functools.partial(SimpleHTTPRequestHandler, directory=directory)
 
+    print(f"Serving at http://localhost:{port}")
     with HTTPServer(("", port), handler) as httpd:
-        print(f"Serving at http://localhost:{port}")
         httpd.serve_forever()
 
 
-if __name__ == "__main__":
-    event_handler = RebuildHandler(timeout=2.0)
-    observer = Observer()
-    observer.schedule(event_handler, path=".", recursive=True)
-    observer.start()
+@context.contextmanager
+def suppress_stdout_stderr() -> Generator[None, None, None]:
+    with open(os.devnull, "w") as devnull:
+        with context.redirect_stderr(devnull), context.redirect_stdout(devnull):
+            yield
 
-    try:
-        run_server()
-    except KeyboardInterrupt:
-        observer.stop()
-    observer.join()
+
+def build_forever(directory: str, sleep: float = 1) -> NoReturn:
+    while True:
+        with suppress_stdout_stderr():
+            buildsite.build(".")
+
+        time.sleep(1)
+
+
+if __name__ == "__main__":
+    directory = "public"
+
+    if len(sys.argv) > 1:
+        directory = sys.argv[1]
+
+    t = threading.Thread(target=run_server, args=[directory])
+    t.daemon = True
+    t.start()
+
+    t2 = threading.Thread(target=build_forever, args=["."])
+    t2.daemon = True
+    t2.start()
+
+    with context.suppress(KeyboardInterrupt):
+        while True:
+            pass

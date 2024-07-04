@@ -67,7 +67,7 @@ if __name__ == "__main__":
     events = convert_ics(ical)
 
     # if path is provided on command line
-    output_filename = "static/events.json"
+    output_filename = "events.json"
     if len(sys.argv) > 1:
         output_filename = sys.argv[1]
 
