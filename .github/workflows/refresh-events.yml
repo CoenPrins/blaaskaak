@@ -32,10 +32,7 @@ jobs:
         cache: 'pip'
     # the magic, running the script
     - name: Generate events.json from Google Calendar
-      run: |
-        cd scripts
-        pip install -r requirements.txt
-        python3 ical2json.py ../public/events.json
+      run: make all
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Upload artifact
