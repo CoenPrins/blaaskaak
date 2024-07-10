@@ -11,12 +11,7 @@ import ics
 
 
 def request_ics_calendar() -> ics.icalendar.Calendar:
-    try:
-        ics_url = os.environ["ICS_URL"]
-    except KeyError:
-        print("ical2json: environment variable ICS_URL not set", file=sys.stderr)
-        print('ical2json: set using `export ICS_URL="<google_url>"`', file=sys.stderr)
-        sys.exit(1)
+    ics_url = Path("calendar-url.txt").read_text()
 
     with urlopen(ics_url) as response:
         calendar = ics.icalendar.Calendar(response.read().decode("utf-8"))
@@ -48,18 +43,17 @@ def write_json(events: list[dict[str, str | None]], filename: str) -> None:
     fn = Path(filename)
     fn.parent.mkdir(exist_ok=True)
 
-    with open(fn, "w") as f:
-        f.write(
-            json.dumps(
-                {
-                    "metadata": {
-                        "generated": datetime.datetime.now().isoformat(),
-                        # NOTE: you can add more metadata if you want here
-                    },
-                    "events": events,
-                }
-            )
+    fn.write_text(
+        json.dumps(
+            {
+                "metadata": {
+                    "generated": datetime.datetime.now().isoformat(),
+                    # NOTE: you can add more metadata if you want here
+                },
+                "events": events,
+            }
         )
+    )
 
 
 if __name__ == "__main__":

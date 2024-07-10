@@ -1,8 +1,5 @@
 name: Refresh Calendar
 
-env:
-  ICS_URL: "https://calendar.google.com/calendar/ical/85a09eba4aa7ae5eed2b0afa2440e470852d78b0dbf9828f3d0df073e0dab21b%40group.calendar.google.com/public/basic.ics"
-
 on:
   # every push to main results in a run of this workflow
   push:
