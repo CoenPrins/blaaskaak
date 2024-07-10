@@ -1,6 +1,8 @@
 :root {
-  --color-text: white;
-  --color-theme: lightblue;
+  --color-nav: grey;
+  --blaaskaak-red: #b2274b;
+  --blaaskaak-blue: #1746a2;
+  --blaaskaak-white: #fff7e9;
 }
 
 * {
@@ -8,8 +10,8 @@
 }
 
 body {
-  background-color: var(--color-theme);
-  color: var(--color-text);
+  background-color: var(--blaaskaak-white);
+  color: var(--blaaskaak-red);
   height: 100vh;
   width: 90%;
   margin: 0 auto;
@@ -35,9 +37,10 @@ nav {
     margin: 0 auto;
     text-transform: uppercase;
     font-weight: bold;
+    color: var(--color-nav);
     width: 80%;
-    border-top: 1.5px solid var(--color-text);
-    border-bottom: 1.5px solid var(--color-text);
+    border-top: 1.5px solid var(--color-nav);
+    border-bottom: 1.5px solid var(--color-nav);
 
     li {
       list-style: none;
@@ -85,7 +88,7 @@ nav {
 
       &:not(:last-child) {
         color: var(--color-main);
-        border-right: 1.5px solid var(--color-text);
+        border-right: 1.5px solid var(--color-nav);
       }
     }
   }
