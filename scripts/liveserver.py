@@ -26,7 +26,7 @@ def build_forever(directory: str, sleep: float = 1) -> NoReturn:
     subprocess.run(["make", "all"])
     while True:
         out = subprocess.run(["make", "site"], capture_output=True, text=True)
-        if not out.stdout.startswith("make: Nothing"):
+        if not out.stdout.startswith("make[1]: Nothing"):
             print(out.stdout)
         time.sleep(1)
 

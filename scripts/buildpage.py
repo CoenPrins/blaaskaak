@@ -44,7 +44,7 @@ def build(page_file: Path) -> None:
     target_file = public_dir / page_file.name
     target_file.write_text(output)
 
-    print(f"{str(page_file)} => {target_file}")
+    # print(f"{str(page_file)} => {target_file}")
 
 
 if __name__ == "__main__":
