@@ -7,12 +7,13 @@ $(BUILD_DIR):
 	mkdir -p $@
 
 $(BUILD_DIR)/%: static/% $(BUILD_DIR)
-	cp -R $< $@; touch $@
+	@echo $< '=>' $@
+	@cp -R $< $@; touch $@
 
 static: $(subst static,$(BUILD_DIR),$(wildcard static/*))
 
-$(BUILD_DIR)/%: pages/% $(BUILD_DIR)
-	sed '/MAIN/r $<' base.html > $@
+$(BUILD_DIR)/%: pages/% $(BUILD_DIR) $(VENV)
+	@$(VENV)/bin/python3 scripts/buildpage.py $<
 
 pages: $(subst pages,$(BUILD_DIR),$(wildcard pages/*))
 
@@ -38,4 +39,4 @@ clean: clean-venv clean-build
 format: $(VENV)
 	$(VENV)/bin/black scripts/*.py
 
-.PHONY: static pages site calendar clean-*
+.PHONY: all static pages site calendar clean* format
