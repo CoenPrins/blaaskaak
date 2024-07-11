@@ -1,34 +1,41 @@
 VENV := .venv
-BUILD := public
+BUILD_DIR := public
 
-PY := $(VENV)/bin/python3
-PIP := $(VENV)/bin/pip
+all: calendar site
 
-$(VENV): requirements.txt
-	python3 -m venv --clear $(VENV)
-	$(PIP) install --quiet --disable-pip-version-check -r requirements.txt
-	touch $(VENV)
+$(BUILD_DIR):
+	mkdir -p $@
 
-calendar: $(VENV)
-	$(PY) ical2json.py "$(BUILD)/events.json"
+$(BUILD_DIR)/%: static/% $(BUILD_DIR)
+	cp -R $< $@; touch $@
 
-site: $(VENV)
-	$(PY) buildsite.py
+static: $(subst static,$(BUILD_DIR),$(wildcard static/*))
 
-serve: $(BUILD)
-	$(PY) liveserver.py "$(BUILD)"
+$(BUILD_DIR)/%: pages/% $(BUILD_DIR)
+	sed '/MAIN/r $<' base.html > $@
 
-clean:
+pages: $(subst pages,$(BUILD_DIR),$(wildcard pages/*))
+
+site: static pages
+
+$(VENV): scripts/requirements.txt
+	python3 -m venv --clear $@
+	$(VENV)/bin/pip install --quiet --disable-pip-version-check -r $^
+	touch $@
+
+calendar: $(VENV) $(BUILD_DIR)
+	$(VENV)/bin/python3 scripts/ical2json.py "$(BUILD_DIR)/events.json"
+
+clean-venv:
 	find . -path "./$(VENV)" -exec rm -rd {} +
-	find . -path "./$(BUILD)" -exec rm -rd {} +
+
+clean-build:
+	find . -path "./$(BUILD_DIR)" -exec rm -rd {} +
+
+clean: clean-venv clean-build
 
 # TODO: add html/css/js
 format: $(VENV)
-	$(VENV)/bin/black *.py
+	$(VENV)/bin/black scripts/*.py
 
-# for easy CLI targets
-virtual-env: $(VENV)
-all: site calendar
-
-.PHONY: calendar site clean serve virtual-env all
-.DEFAULT_GOAL := site
+.PHONY: static pages site calendar clean-*

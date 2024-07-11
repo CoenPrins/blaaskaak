@@ -6,30 +6,28 @@ import sys
 import threading
 import time
 from typing import NoReturn, Generator
-
-import buildsite
+import subprocess
 
 
 def run_server(directory: str, port: int = 8000) -> None:
     handler = functools.partial(SimpleHTTPRequestHandler, directory=directory)
 
+    try:
+        server = HTTPServer(("", port), handler)
+    except OSError:
+        sys.exit("port already in use: is another server running?")
+
     print(f"Serving at http://localhost:{port}")
-    with HTTPServer(("", port), handler) as httpd:
+    with server as httpd:
         httpd.serve_forever()
 
 
-@context.contextmanager
-def suppress_stdout_stderr() -> Generator[None, None, None]:
-    with open(os.devnull, "w") as devnull:
-        with context.redirect_stderr(devnull), context.redirect_stdout(devnull):
-            yield
-
-
 def build_forever(directory: str, sleep: float = 1) -> NoReturn:
+    subprocess.run(["make", "all"])
     while True:
-        with suppress_stdout_stderr():
-            buildsite.build(".")
-
+        out = subprocess.run(["make", "site"], capture_output=True, text=True)
+        if not out.stdout.startswith("make: Nothing"):
+            print(out.stdout)
         time.sleep(1)
 
 
