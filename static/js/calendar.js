@@ -23,8 +23,11 @@ function show(eventData) {
     clone.querySelector(".event-month").textContent = month;
     clone.querySelector(".event-title").textContent = event.name;
     clone.querySelector(".event-location").textContent = event.location;
-    clone.querySelector(".event-description").textContent = event.description;
-    clone.querySelector(".event-url").setAttribute("href", event.url || "");
+    clone.querySelector(".event-description").insertAdjacentHTML('beforeend', event.description);
+
+    if (event.url) {
+      clone.querySelector(".event-url").setAttribute("href", event.url);
+    }
 
     eventListElement.appendChild(clone);
   }
