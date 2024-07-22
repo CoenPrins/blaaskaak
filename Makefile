@@ -35,8 +35,8 @@ clean-build:
 
 clean: clean-venv clean-build
 
-serve:
-	$(VENV)/bin/python3 scripts/liveserver.py
+serve: all
+	scripts/liveserver $(BUILD_DIR)
 
 # TODO: add html/css/js
 format: $(VENV)
