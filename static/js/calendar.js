@@ -1,3 +1,19 @@
+function parseLocation(location) {
+  // Oudemanhuispoort, 1012 CN Amsterdam, Nederland
+  // --> Oudemanhuispoort (Amsterdam)
+  const parts = location.split(",");
+
+  if (parts.length <= 1) {
+    return location;
+  }
+
+  var result = parts[0];
+
+  result += " (" + parts[1].split(" ").slice(-1)[0] + ")";
+
+  return result;
+}
+
 function show(eventData) {
   const template = document.querySelector("#event-template");
   if (!template) {
@@ -22,12 +38,12 @@ function show(eventData) {
     clone.querySelector(".event-day").textContent = date.getDate();
     clone.querySelector(".event-month").textContent = month;
     clone.querySelector(".event-title").textContent = event.name;
-    clone.querySelector(".event-location").textContent = event.location;
+    clone.querySelector(".event-location").textContent = parseLocation(event.location);
     clone.querySelector(".event-description").insertAdjacentHTML('beforeend', event.description);
 
-    if (event.url) {
-      clone.querySelector(".event-url").setAttribute("href", event.url);
-    }
+    //if (event.url) {
+    //  clone.querySelector(".event-url").setAttribute("href", event.url);
+    //}
 
     eventListElement.appendChild(clone);
   }
