@@ -10,6 +10,7 @@
 }
 
 body {
+  padding-top: 2em;
   background-color: var(--blaaskaak-white);
   color: var(--blaaskaak-red);
   height: 100vh;
@@ -21,6 +22,7 @@ body {
 header>h1 {
   text-align: center;
   text-transform: uppercase;
+  font-size: 2rem;
 }
 
 
