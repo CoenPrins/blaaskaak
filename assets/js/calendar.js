@@ -52,8 +52,8 @@ function show(eventData) {
   document.querySelector("#events-updated").textContent += lastUpdate;
 }
 
-if (document.querySelector("#event-template")) {
-  fetch("events.json")
+if (document.querySelector("#event-template") != null) {
+  fetch("/events.json")
     .then(response => {
       if (!response.ok) {
         throw new Error("HTTP error " + response.status);

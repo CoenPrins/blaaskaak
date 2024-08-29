@@ -8,7 +8,7 @@
   {{ with resources.Get "css/style.css" }}<link rel="stylesheet" href="{{ .Permalink }}">{{ end }}
   {{ with resources.Get "css/event-list.css" }}<link rel="stylesheet" href="{{ .Permalink }}">{{ end }}
 
-  {{ with resources.Get "js/calendar.js" }}<script src="{{ .Permalink }}"></script>{{ end }}
+  {{ with resources.Get "js/calendar.js" }}<script src="{{ .Permalink }}" defer></script>{{ end }}
   {{ with resources.Get "js/nav-current-page.js" }}<script src="{{ .Permalink }}" defer></script>{{ end }}
 </head>
 

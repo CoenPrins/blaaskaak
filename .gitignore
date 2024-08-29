@@ -2,3 +2,4 @@
 public/
 .hugo_build.lock
 todo
+static/events.json
