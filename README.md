@@ -24,7 +24,7 @@ this document.
     ├── css                        #
     │   ├── event-list.css         # Just the event list styles
     │   └── style.css              # Main styles (common to each page)
-    ├── img/                       # Images and other media content
+    ├── media/                     # Images and other media content
     └── js                         #
         ├── calendar.js            # Construct the event list
         └── nav-current-page.js    # Arrows in nav point to current page
@@ -48,7 +48,7 @@ are the subcommands (called 'targets' in Make):
 
 ## Static Folder
 
-This includes javascript (`js/`), css (`css/`) and media (`img/`) files.
+This includes javascript (`js/`), css (`css/`) and media (`media/`) files.
 Files are directly copied to the build folder (`public/`), without changing.
 
 Couple of ideas to keep it clean:
