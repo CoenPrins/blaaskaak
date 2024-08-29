@@ -1,2 +1,4 @@
 .venv
 public/
+.hugo_build.lock
+todo

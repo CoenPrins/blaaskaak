@@ -52,7 +52,7 @@ function show(eventData) {
   document.querySelector("#events-updated").textContent += lastUpdate;
 }
 
-if (!document.querySelector("#event-template")) {
+if (document.querySelector("#event-template")) {
   fetch("events.json")
     .then(response => {
       if (!response.ok) {

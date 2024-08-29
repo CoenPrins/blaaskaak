@@ -1,0 +1,4 @@
+baseURL = 'https://blaaskaak.nl'
+languageCode = 'nl-NL'
+title = 'Blaaskaak'
+disableKinds = ['rss', 'taxonomy', 'term']

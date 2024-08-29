@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if not .IsHome }}{{ .Path | humanize }} | {{ end }}{{ .Site.Title }}</title>
+  {{ with resources.Get "css/style.css" }}<link rel="stylesheet" href="{{ .Permalink }}">{{ end }}
+  {{ with resources.Get "css/event-list.css" }}<link rel="stylesheet" href="{{ .Permalink }}">{{ end }}
+
+  {{ with resources.Get "js/calendar.js" }}<script src="{{ .Permalink }}"></script>{{ end }}
+  {{ with resources.Get "js/nav-current-page.js" }}<script src="{{ .Permalink }}" defer></script>{{ end }}
+</head>
+
+<body>
+  <header>
+    <h1>🎷🥁🎺<br>{{ .Site.Title }}</h1>
+
+    <nav>
+      <ol>
+        <li><a href="/homepage/">Home</a></li>
+        <li><a href="/over-ons/">Over ons</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  {{- block "content" . }}{{- end }}
+</body>
+
+</html>
