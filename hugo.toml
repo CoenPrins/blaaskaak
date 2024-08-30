@@ -9,5 +9,7 @@ disableKinds = ['rss', 'taxonomy', 'term']
 	keywords = [
 		'blaaskaak',
 		'rave',
-		'band'
+		'band',
+		'Utrecht',
 	]
+	shareImage = "/media/standby.jpg"

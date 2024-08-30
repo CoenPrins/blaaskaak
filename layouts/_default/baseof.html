@@ -10,15 +10,15 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Blaaskaak">
   <meta property="og:description" content="{{ .Site.Params.description }}">
-  <meta property="og:image" content="URL_to_image_of_Blaaskaak">
+  <meta property="og:image" content="{{ .Site.Params.shareImage }}">
   <meta property="og:url" content="{{ .Site.BaseURL }}">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ .Site.Params.shortDescription }}">
   <meta name="twitter:description" content="{{ .Site.Params.description }}">
-  <meta name="twitter:image" content="URL_to_image_of_Blaaskaak">
+  <meta name="twitter:image" content="{{ .Site.Params.shareImage }}">
 
-  <title>{{ if not .IsHome }}{{ .Path | humanize }} | {{ end }}{{ .Site.Title }}</title>
+  <title>{{ if not .IsHome }}{{ .Path | humanize }} | {{ end }}{{ .Site.Title }}!</title>
 
   <link rel="canonical" href="{{ .Site.BaseURL }}">
   {{ with resources.Get "css/style.css" }}<link rel="stylesheet" href="{{ .Permalink }}">{{ end }}
