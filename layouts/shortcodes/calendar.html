@@ -1,4 +1,9 @@
-{{ with .Site.Data.events }}
+{{ $events := .Site.Data.events }}
+
+{{ if and (not hugo.IsProduction) (not (fileExists "hi")) }}
+  {{ $events = .Site.Data.testevents }}
+{{ end }}
+{{ with $events }}
 <main>
   <div class="list-container">
     <ul id="events" class="scale-up-hover-list">
