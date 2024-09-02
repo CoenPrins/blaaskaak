@@ -48,8 +48,10 @@ function show(eventData) {
     eventListElement.appendChild(clone);
   }
 
-  const lastUpdate = new Date(eventData.metadata.generated).toLocaleString('nl-NL');
-  document.querySelector("#events-updated").textContent += lastUpdate;
+  const date = new Date(eventData.metadata.generated);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = date.toLocaleDateString('nl-NL', options);
+  document.querySelector("#events-updated").textContent += formattedDate;
 }
 
 if (document.querySelector("#event-template") != null) {
