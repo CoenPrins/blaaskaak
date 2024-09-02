@@ -11,7 +11,8 @@ import ics
 
 
 def request_ics_calendar() -> ics.icalendar.Calendar:
-    ics_url = Path("calendar-url.txt").read_text()
+    current_folder = Path(sys.argv[0]).parent
+    ics_url = (current_folder / Path("calendar-url.txt")).read_text()
 
     with urlopen(ics_url) as response:
         calendar = ics.icalendar.Calendar(response.read().decode("utf-8"))
@@ -40,7 +41,7 @@ def convert_ics(ical: ics.icalendar.Calendar) -> list[dict[str, str | None]]:
 
 
 def write_json(events: list[dict[str, str | None]], filename: str) -> None:
-    fn = Path(filename)
+    fn = Path(filename).resolve()
     fn.parent.mkdir(exist_ok=True)
 
     fn.write_text(
@@ -54,6 +55,8 @@ def write_json(events: list[dict[str, str | None]], filename: str) -> None:
             }
         )
     )
+
+    print("events file written to", fn)
 
 
 if __name__ == "__main__":
