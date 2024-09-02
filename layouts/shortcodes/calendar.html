@@ -1,0 +1,25 @@
+{{ with .Site.Data.events }}
+<main>
+  <div class="list-container">
+    <ul id="events" class="scale-up-hover-list">
+      {{ $today := time.Now }}
+      {{ $upcomingEvents := (where .events "begin" ">" $today) }}
+      {{ range $event := sort .events "begin" }}
+      <li>
+      {{ $date := $event.begin }}
+      <div class="event-date">
+        <p class="event-day">{{ $date | dateFormat "2" }}</p>
+        <p class="event-month">{{ $date | dateFormat "January" }}</p>
+      </div>
+      <div class="event-details">
+        <h1 class="event-title">{{ $event.name }}</h1>
+        <p class="event-location">{{ $event.location }}</p>
+        <p class="event-description">{{ $event.description | safeHTML }}</p>
+      </div>
+    </li>
+    {{ end }}
+    </ul>
+  </div>
+  <div id="events-updated">Laatst geupdate op {{ .metadata.generated | dateFormat ":date_long" }}</div>
+</main>
+{{ end }}

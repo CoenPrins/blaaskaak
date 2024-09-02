@@ -1,5 +1,6 @@
 baseURL = 'https://blaaskaak.nl'
-languageCode = 'nl-NL'
+languageCode = 'nl_NL'
+defaultContentLanguage = 'nl'
 title = 'Blaaskaak'
 disableKinds = ['rss', 'taxonomy', 'term']
 
