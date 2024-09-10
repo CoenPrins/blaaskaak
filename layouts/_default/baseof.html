@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ .Site.Params.description }} ">
-  <meta name="author" content="Blaaskaak">
+  <meta name="description" content="{{ site.Params.description }} ">
+  <meta name="author" content="{{ site.Title }}">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Blaaskaak">
-  <meta property="og:description" content="{{ .Site.Params.description }}">
-  <meta property="og:image" content="{{ .Site.Params.shareImage }}">
-  <meta property="og:url" content="{{ .Site.BaseURL }}">
+  <meta property="og:title" content="{{ site.Title }}">
+  <meta property="og:description" content="{{ site.Params.description }}">
+  <meta property="og:image" content="{{ site.Params.shareImage }}">
+  <meta property="og:url" content="{{ site.BaseURL }}">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ .Site.Params.shortDescription }}">
-  <meta name="twitter:description" content="{{ .Site.Params.description }}">
-  <meta name="twitter:image" content="{{ .Site.Params.shareImage }}">
+  <!--<meta name="twitter:card" content="summary_large_image">-->
+  <meta name="twitter:title" content="{{ site.Params.shortDescription }}">
+  <meta name="twitter:description" content="{{ site.Params.description }}">
+  <meta name="twitter:image" content="{{ site.Params.shareImage }}">
 
-  <title>{{ if not .IsHome }}{{ .Path | humanize }} | {{ end }}{{ .Site.Title }}!</title>
+  <title>{{ if not .IsHome }}{{ .Path | humanize }} | {{ end }}{{ site.Title }}!</title>
 
-  <link rel="icon" href="{{ .Site.Params.favicon }}">
+  <link rel="icon" href="{{ site.Params.favicon }}">
 
-  <link rel="canonical" href="{{ .Site.BaseURL }}">
+  <link rel="canonical" href="{{ site.BaseURL }}">
   {{ with resources.Get "css/style.css" }}
   <link rel="stylesheet" href="{{ .Permalink }}">{{ end }}
   {{ with resources.Get "css/event-list.css" }}
@@ -32,10 +32,12 @@
 </head>
 
 <body>
-  <!--  <!--<h1>🎷🥁🎺<br>{{ .Site.Title }}</h1>-->
+  <!--  <!--<h1>🎷🥁🎺<br>{{ site.Title }}</h1>-->
 
   <header>
-    <a href="/"><img src="/media/logo-slechte-kwali.png" alt="Logo Blaaskaak" id="logo"></a>
+    <a aria-label="Home" href="/">
+      <img src="/media/logo-slechte-kwali.png" alt="Logo Blaaskaak" id="logo">
+    </a>
     <nav>
       <ol>
         <li><a href="/homepage/">Home</a></li>
