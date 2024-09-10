@@ -1,95 +1,67 @@
 # blaaskaak.nl
 
 This is the repository for the [blaaskaak.nl](https://blaaskaak.nl) website.
-There are a couple points of interest, each described in their own sections in
-this document.
 
+This README will guide you through the process of setting up the site locally
+and provide a brief overview of how Hugo, the site builder, works.
 
-## Structure
+## Prerequisites
 
-```
-.
-├── Makefile                       # File used to build the site
-├── README.md                      # This file
-├── base.html                      # Base template for each page
-├── calendar-url.txt               # The ICS url to the Google Calendar
-├── pages/                         # HTML main content for each page
-├── public/                        # Build location, ignored by Git
-├── scripts                        #
-│   ├── ical2json.py               # Convert the ics file to JS-readable
-│   ├── liveserver.py              # Run a local live server
-│   └── requirements.txt           # Python packages
-└── static                         #
-    ├── CNAME                      # The site name. Required!
-    ├── css                        #
-    │   ├── event-list.css         # Just the event list styles
-    │   └── style.css              # Main styles (common to each page)
-    ├── media/                     # Images and other media content
-    └── js                         #
-        ├── calendar.js            # Construct the event list
-        └── nav-current-page.js    # Arrows in nav point to current page
-```
+Before you begin, ensure you have the following installed:
 
-## Building website
+- [Hugo](https://gohugo.io/getting-started/installing/) (Prebuilt binaries
+  recommended)
 
-Generally you can run everything for this site via the command `make`. These
-are the subcommands (called 'targets' in Make):
+## Getting Started
 
-- `all`: Same as `make calendar site`.
-- `static`: Copy static files to `public/`.
-- `pages`: Build pages with base to `public/`.
-- `site`: Same as `make pages static`.
-- `calendar`: Download and convert Google Calendar.
-- `clean-venv`: Remove `.venv/` folder.
-- `clean-build`: Remove `public/` folder.
-- `clean`: Same as `make clean-venv clean-build`
-- `format`: Format files (currently only Python files)
+Follow these steps to get the site up and running on your local machine:
 
+1. **Clone the Repository**
 
-## Static Folder
+    ```sh
+    git clone git@github.com:CoenPrins/blaaskaak.git
+    cd blaaskaak
+    ```
 
-This includes javascript (`js/`), css (`css/`) and media (`media/`) files.
-Files are directly copied to the build folder (`public/`), without changing.
+2. TODO: first build event list?
 
-Couple of ideas to keep it clean:
+2. **Start the Hugo Server**
 
-- Shared css goes in `style.css`. Larger css for specific elements that only
-  appear on one page can go in separate css files.
-- Try not to write html in js files, but use html [`<template>`
-  elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template).
-- Use _tools_ in your _editor_ that make life easier:
-  - Beautifiers / formatters to format your code (e.g.
-    [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode))
-  - Linters for pointing to obvious errors
+    Run the following command to start the local Hugo development server:
 
+    ```sh
+    hugo server
+    ```
 
-## Pages Folder
+3. **Open in Browser**
 
-Pages define the main HTML content for each page. Want another page? Add a file
-and write content. No need for `<html>` and `<body>` tags (basically everything
-that can be seen in [`base.html`](./base.html). It is recommended to wrap
-everything in a `<main>` tag, but not necessary. If you want the page to be
-different from others, you _can_ just write a complete html file in the
-`pages/` folder. It is important that this file starts with the line:
-`<!DOCTYPE html>`.
+    Open your web browser and navigate to `http://localhost:1313` to view the site.
 
-## Base Template
+## How Hugo Works
 
-This HTML will appear on every page. `$content` is replaced with the file
-content of the page file. `$subtitle` replaced with the humanized filename of
-the page file.
+Hugo is a static site generator that builds your site from content, normally
+written in Markdown, but we do HTML, and templates written in HTML. Here's a
+brief overview of the key components:
 
+- **Assets**: The css and javascript of the website. Only loaded if included in
+  the code, see the [Hugo Docs](https://gohugo.io/functions/resources/get/).
+- **Content**: Write the content of the website in the `content/` directory.
+  Each file represents a page.
+  > [!TIP]
+  > Give your file a good name, because its name is converted to the title of
+  > that page: `over-ons.html` becomes `/over-ons/` in the url and `Over ons`
+  > in the title!
+- **Templates**: Define the structure and layout of your site using HTML
+  templates in the `layouts/` directory. These templates determine how your
+  content is rendered.
+- **Static Files**: These files are copied to the output folder during build.
+  No processing is done (hence; static).
+- **Configuration**: Configure your site using the `hugo.toml` file. This
+  file contains settings such descriptions of Blaaskaak, and the url to certain
+  images.
 
-## Google Calendar Data
+## Resources
 
-The information about gigs is pulled from Google Calendar, based on a schedule
-(currently once a day). This is done using Github Actions, which runs `make
-all` once a day and then deploys the `public/` folder to GitHub Pages (hosting).
+For more information on Hugo, check out the following resources:
 
-It runs on:
-- Schedule: every day at 15:35
-- Push: every push to the `main` branch
-- Manual: can be activated manually
-
-This means that _everything_ that appears in the `public/` folder, _will_ be
-available online. Remember that.
+- [Hugo Documentation](https://gohugo.io/documentation/)
