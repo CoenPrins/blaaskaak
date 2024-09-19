@@ -14,5 +14,6 @@ params:
   description: Blaaskaak is a high-energy party rave band known for electrifying
     performances and unforgettable music. Join the rave and experience the
     ultimate party vibe!
-  shareImage: /media/standby.jpg
+  images:
+    - /media/standby.jpg
   favicon: /media/logo-slechte-kwali.png
