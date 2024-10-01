@@ -9,6 +9,8 @@ and provide a brief overview of how Hugo, the site builder, works.
 
 Before you begin, ensure you have the following installed:
 
+- Git
+- Python3
 - [Hugo](https://gohugo.io/getting-started/installing/) (Prebuilt binaries
   recommended)
 
@@ -23,9 +25,12 @@ Follow these steps to get the site up and running on your local machine:
     cd blaaskaak
     ```
 
-2. TODO: first build event list?
+2. (optional) To run the site local with real event data:
+    ```sh
+    bash ./scripts/get-calendar
+    ```
 
-2. **Start the Hugo Server**
+3. **Start the Hugo Server**
 
     Run the following command to start the local Hugo development server:
 
@@ -33,7 +38,7 @@ Follow these steps to get the site up and running on your local machine:
     hugo server
     ```
 
-3. **Open in Browser**
+4. **Open in Browser**
 
     Open your web browser and navigate to `http://localhost:1313` to view the site.
 
