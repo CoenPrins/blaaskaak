@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blaaskaak</title>
-  <link href="/css/style.css" rel="stylesheet">
+  {{ with resources.Get "css/style.css" }}
+  <link rel="stylesheet" href="{{ .Permalink }}">
+  {{ end }}
   <style>
     body {
       font-weight: bold;

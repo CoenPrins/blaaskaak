@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ site.Params.description }} ">
+  <meta name="author" content="{{ site.Title }}">
+  <meta name="robots" content="index, follow">
+
+  <title>{{ if not .IsHome }}{{ .Path | humanize }} | {{ end }}{{ site.Title }}!</title>
+
+  {{ template "_internal/opengraph.html" . }}
+
+  {{ template "_internal/twitter_cards.html" . }}
+
+  {{ template "_internal/schema.html" . }}
+
+
+  {{ with site.Params.favicon }}
+  <link rel="icon" href="{{ . }}">
+  {{ end }}
+
+  <link rel="canonical" href="{{ .Permalink }}">
+
+  {{ with resources.Get "css/style.css" }}
+  <link rel="stylesheet" href="{{ .Permalink }}">
+  {{ end }}
+
+  {{ with resources.Get "css/event-list.css" }}
+  <link rel="stylesheet" href="{{ .Permalink }}">
+  {{ end }}
+
+  {{ with resources.Get "js/nav-current-page.js" }}
+  <script src="{{ .Permalink }}" defer></script>
+  {{ end }}
+</head>
+
+<body>
+  <!--  <!--<h1>🎷🥁🎺<br>{{ site.Title }}</h1>-->
+
+  <header>
+    <a aria-label="Home" href="/">
+      <img src="/media/logo-slechte-kwali.png" alt="Logo Blaaskaak" id="logo">
+    </a>
+    <nav>
+      <ol>
+        <li><a href="/homepage/">Home</a></li>
+        <li><a href="/over-ons/">Over ons</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  {{- block "content" . }}{{- end }}
+</body>
+
+</html>

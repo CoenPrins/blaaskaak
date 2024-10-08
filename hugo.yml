@@ -1,0 +1,19 @@
+baseURL: https://blaaskaak.nl/
+title: Blaaskaak
+
+languageCode: nl_NL
+defaultContentLanguage: nl
+
+disableKinds:
+  - rss
+  - taxonomy
+  - term
+
+params:
+  shortDescription: Blaaskaak – Party Rave Band
+  description: Blaaskaak is a high-energy party rave band known for electrifying
+    performances and unforgettable music. Join the rave and experience the
+    ultimate party vibe!
+  images:
+    - /media/standby.jpg
+  favicon: /media/logo-slechte-kwali.png
