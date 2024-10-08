@@ -1,8 +1,5 @@
-{{ $events := .Site.Data.events }}
+{{ $events := site.Data.events }}
 
-{{ if and (not hugo.IsProduction) (not (fileExists "hi")) }}
-{{ $events = .Site.Data.testevents }}
-{{ end }}
 {{ with $events }}
 <main>
   <div class="list-container">
