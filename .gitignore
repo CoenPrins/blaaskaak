@@ -1,5 +1,4 @@
 .venv
 public/
 .hugo_build.lock
-todo
 data/events.json
