@@ -1,56 +1,57 @@
-<!DOCTYPE html>
-<html lang="nl">
+{{ define "content" }}
+{{ .Content }}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blaaskaak</title>
-  {{ with resources.Get "css/style.css" }}
-  <link rel="stylesheet" href="{{ .Permalink }}">
+<div class="list-container">
+  <ul id="events" class="scale-up-hover-list">
+  </ul>
+</div>
+
+
+<script type="module">
+  const url = '/events.ics'
+  {{ with resources.Get "js/ical.min.js" }}
+  import ICAL from '{{ .RelPermalink }}'
   {{ end }}
-  <style>
-    body {
-      font-weight: bold;
-      text-align: center;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+
+  async function loadEvents() {
+    const res = await fetch(url)
+    const text = await res.text()
+    const jcal = ICAL.parse(text)
+    const comp = new ICAL.Component(jcal)
+    const now = new Date()
+    const events = comp
+      .getAllSubcomponents('vevent')
+      .map(v => new ICAL.Event(v))
+      // .filter(e => {
+      //   const d = e.startDate.toJSDate()
+      //   return d >= new Date(now.getFullYear(), now.getMonth(), now.getDate())
+      // })
+      .sort((a, b) => a.startDate.toJSDate() - b.startDate.toJSDate())
+    const list = document.querySelector('#events')
+    for (const event of events) {
+      const date = event.startDate.toJSDate()
+      const monthday = date.getDate()
+      const monthname = date.toLocaleString('nl-NL', {month: 'short'})
+      list.innerHTML += `
+        <li>
+          <div class="event-date">
+            <p class="event-day">${monthday}</p>
+            <p class="event-month">${monthname}</p>
+          </div>
+          <div class="event-details">
+          <h1 class="event-title">${event.summary}</h1>
+            <p class="event-location">
+              <a href="https://www.google.nl/maps/place/${encodeURIComponent(event.location)}">
+              ${event.location}
+              </a>
+            </p>
+<p class="event-description">${event.description}</p>
+          </div>
+        </li>`
     }
+  }
 
-    h1 {
-      font-size: 3em;
-      margin: 0;
-      margin-top: 10vh;
-    }
-    
-    p {
-      font-size: 1.2em;
-    }
+  loadEvents()
+</script>
 
-    a {
-      color: inherit;
-    }
-
-    img {
-      margin: 0;
-    }
-  </style>
-</head>
-
-<body>
-  <h1>
-  Wordt aan gewerkt.
-  </h1>
-  <p>
-  Boeken: <a href="mailto:ties@treetopagency.com">ties@treetopagency.com</a>
-  </p>
-
-  <p>
-  Instagram: <a href="https://instagram.com/_blaaskaak_">@_blaaskaak_</a>
-  </p>
-
-  <img src="/media/standby.jpg" alt="" width="40%">
-</body>
-
-</html>
+{{ end }}

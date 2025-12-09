@@ -1,15 +1,10 @@
 name: Refresh Calendar
 
 on:
-  # every push to main results in a run of this workflow
-  push:
-    branches:
-      - main
-  # but is also runs everyday at 15:32 (not exact)
   schedule:
-    - cron: '32 15 * * *'
-  # and can be run manually
-  workflow_dispatch: # Allows manual triggering
+    # TODO: change freq to every 2 days?
+    - cron: '18 18 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,37 +19,8 @@ jobs:
     - name: Checkout code from repository
       uses: actions/checkout@v4
 
-    - name: Install Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-        cache: 'pip'
-
-    - name: Generate events.json from Google Calendar
-      run: bash ./scripts/get-calendar
-
-    - name: Install Hugo
-      run: |
-        url="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
-        wget -O ${{ runner.temp }}/hugo.deb "$url" && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+    - name: Update calendar
       env:
-        HUGO_VERSION: 0.126.0
-
-    - name: Build Hugo
-      env:
-        HUGO_ENVIRONMENT: production
-        HUGO_ENV: production
+        GCAL_URL: https://calendar.google.com/calendar/ical/3d4cae9300502ef446e65cc6d4434f3e39e818a3b34bd9d42c9c3b567b779a3f%40group.calendar.google.com/public/basic.ics
       run: |
-        hugo --gc --minify
-
-    - name: Setup Pages
-      uses: actions/configure-pages@v5
-
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: 'public/'
-
-    - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
-      id: deployment
+        curl -L "$GCAL_URL" > static/events.ics
