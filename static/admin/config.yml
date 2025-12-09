@@ -1,37 +1,58 @@
 backend:
   name: github
   repo: CoenPrins/blaaskaak
-  branch: admin-panel
+  branch: admin-panel # TODO
 media_folder: static/media
 public_folder: /media
+site_url: https://blaaskaak.netlify.app
+display_url: https://blaaskaak.nl
+logo:
+  src: https://blaaskaak.nl/media/logo-slechte-kwali.png
+  show_in_header: true
 collections:
-  - name: overig
-    label: Overig
-    editor:
-      preview: false
-    files:
-      - label: "Navigatiebalk"
-        name: "navigation"
-        file: "data/nav.yml"
-        fields:
-          - label: "Items"
-            name: "nav"
-            widget: "list"
-            fields:
-              - { label: "Naam", name: "name", widget: "string" }
-              - { label: "Pagin URL (bijv. /over-ons/)", name: "page", widget: "string" }
-
-  - name: paginas
-    label: Pagina's
-    label_singular: Pagina
+  - name: pages
+    label: Pages
+    label_singular: Page
     create: true
     editor:
       preview: false
     folder: content
     fields:
-      - label: Naam
+      - label: Title (also becomes the URL)
+        hint: Page URL cannot be changed afterwards!
         name: title
         widget: string
-      - label: Tekst
+      - label: Content
         name: body
         widget: markdown
+
+  - name: settings
+    label: Site settings
+    editor:
+      preview: false
+    files:
+      - label: Menu
+        name: nav
+        file: data/nav.yml
+        fields:
+          - label: Items
+            name: nav
+            widget: list
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Page URL (e.g. /over-ons/)", name: "page", widget: "string" }
+      - file: data/basics.yml
+        label: Basics
+        name: basics
+        fields:
+          - label: Icon
+            name: icon
+            widget: image
+      - file: data/socials.yml
+        label: Socials
+        name: socials
+        widget: list
+        fields:
+          - { name: "type", label: "Type", widget: "string" }
+          - { name: "username", label: "Display name", widget: "string" }
+          - { name: "url", label: "Link", widget: "string" }
