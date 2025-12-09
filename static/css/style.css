@@ -20,117 +20,117 @@ body {
   max-width: 70em;
 }
 
-/* TODO: can be deleted? */
-/*header>h1 {*/
-/*  text-align: center;*/
-/*  text-transform: uppercase;*/
-/*  font-size: 2rem;*/
-/*}*/
-
 header {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  position: relative;
-  margin-bottom: 4em;
-  min-height: 100px;
-  height: auto;
+  gap: 5vw;
 }
 
-img#logo {
-  max-width: 100px;
+#logo {
+  max-width: 120px;
   height: auto;
-  display: flex;
+  flex: 0 0 auto;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.35);
+  }
 }
 
-/* NAVIGATION BAR */
 nav {
-  width: fit-content;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 600px;
-  padding-top: 1em;
+  flex: 1 1 auto;
+  min-width: 0;
+  container-type: inline-size;
+  justify-items: center;
+}
 
-  ol {
-    margin: 0 auto;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: var(--color-nav);
-    width: 80%;
+nav ol {
+  display: flex;
+  column-gap: 2rem;
+  row-gap: 0.7rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  align-items: center;
+  white-space: nowrap;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--color-nav);
+
+  & li.current a {
+    &::before {
+      display: inline-block;
+      content: '→';
+      padding-right: 0.5em;
+    }
+
+    &::after {
+      display: inline-block;
+      content: '←';
+      padding-left: 0.5em;
+    }
+  }
+
+  & li {
+    text-align: center;
+    a {
+      color: var(--color-main);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  & li:not(:last-child) {
+    padding-right: 2em;
+    color: var(--color-main);
+    border-right: 2px solid var(--color-nav);
+  }
+}
+
+@container (max-width: 420px) {
+  nav ol {
+    flex-direction: column;
+    align-items: stretch;
+    white-space: normal;
+    max-width: fit-content;
+    padding: 1rem 3rem;
+
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
     border-image-source: url('/media/scribble.svg');
     border-image-slice: 30 0;
     border-image-repeat: stretch;
-    padding: 0.5em 0;
 
-    li {
-      list-style: none;
-      text-align: center;
-      padding: .2em;
-
-      a {
-        color: var(--color-main);
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-
-    li.current a {
-      &::before {
-        display: inline-block;
-        content: '→';
-        padding-right: 0.5em;
-      }
-
-      &::after {
-        display: inline-block;
-        content: '←';
-        padding-left: 0.5em;
-      }
-    }
-  }
-}
-
-
-@media (min-width: 450px) {
-  img#logo {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    max-width: 150px;
-    height: auto;
-  }
-
-  nav ol {
-    border: none;
-    width: 100%;
-    display: flex;
-
-    li {
-      padding: 0;
-      margin: 0;
-      flex: 1;
-      text-align: center;
-
+    & li {
       &:not(:last-child) {
-        color: var(--color-main);
-        border-right: 2px solid var(--color-nav);
+        padding-right: 0;
+        border: none;
       }
     }
   }
 }
 
-a[href^="mailto:"] {
+a {
   color: inherit;
-
-  &::before {
-  content: '✉️ ';
-  user-select: none;
 }
+
+a:hover {
+  color: color-mix(in srgb, var(--blaaskaak-red) 70%, black 30%);
+}
+
+/* this adds a mail emoji before email addresses */
+/* a[href^="mailto:"] { */
+/*   color: inherit; */
+/**/
+/*   &::before { */
+/*   content: '✉️ '; */
+/*   user-select: none; */
+/* } */
 
 .container {
   text-align: center;
