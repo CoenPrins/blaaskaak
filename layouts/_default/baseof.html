@@ -23,21 +23,14 @@
 
   <link rel="canonical" href="{{ .Permalink }}">
 
-  {{ with resources.Get "css/style.css" }}
-  <link rel="stylesheet" href="{{ .Permalink }}">
-  {{ end }}
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/event-list.css">
 
-  {{ with resources.Get "css/event-list.css" }}
-  <link rel="stylesheet" href="{{ .Permalink }}">
-  {{ end }}
-
-  {{ with resources.Get "js/nav-current-page.js" }}
-  <script src="{{ .Permalink }}" defer></script>
-  {{ end }}
+  <script src="/js/nav-current-page.js" defer></script>
 </head>
 
 <body>
-  <!--  <!--<h1>🎷🥁🎺<br>{{ site.Title }}</h1>-->
+  <!-- <h1>🎷🥁🎺<br>{{ site.Title }}</h1> -->
 
   <header>
     <a aria-label="Home" href="/">
@@ -45,7 +38,7 @@
     </a>
     <nav>
       <ol>
-        <li><a href="/homepage/">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/over-ons/">Over ons</a></li>
         <li><a href="/contact/">Contact</a></li>
       </ol>
