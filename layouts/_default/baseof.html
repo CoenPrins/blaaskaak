@@ -30,17 +30,18 @@
 </head>
 
 <body>
-  <!-- <h1>🎷🥁🎺<br>{{ site.Title }}</h1> -->
-
   <header>
     <a aria-label="Home" href="/">
       <img src="/media/logo-slechte-kwali.png" alt="Logo Blaaskaak" id="logo">
     </a>
     <nav>
       <ol>
-        <li><a href="/">Home</a></li>
-        <li><a href="/over-ons/">Over ons</a></li>
-        <li><a href="/contact/">Contact</a></li>
+        {{- $currentPageURL := page.RelPermalink -}}
+        {{ range site.Data.nav.nav }}
+        <li {{ if (eq $currentPageURL .page) -}}class="current" {{- end }}>
+          <a href="{{ .page }}">{{ .name }}</a>
+        </li>
+        {{- end }}
       </ol>
     </nav>
   </header>

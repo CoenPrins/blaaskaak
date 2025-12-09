@@ -1,0 +1,7 @@
+nav:
+  - name: Home
+    page: /
+  - name: Over Ons
+    page: /over-ons/
+  - name: Contact
+    page: /contact/

@@ -1,0 +1,6 @@
+---
+---
+
+# Onze volledige agenda
+
+{{< calendar >}}
