@@ -4,7 +4,7 @@ backend:
   branch: admin-panel # TODO
 media_folder: static/media
 public_folder: /media
-site_url: https://blaaskaak.netlify.app
+site_url: https://blaaskaak.nl # TODO?
 display_url: https://blaaskaak.nl
 logo:
   src: https://blaaskaak.nl/media/logo-slechte-kwali.png
@@ -51,8 +51,11 @@ collections:
       - file: data/socials.yml
         label: Socials
         name: socials
-        widget: list
         fields:
-          - { name: "type", label: "Type", widget: "string" }
-          - { name: "username", label: "Display name", widget: "string" }
-          - { name: "url", label: "Link", widget: "string" }
+          - label: Items
+            name: socials
+            widget: list
+            fields:
+              - { name: "type", label: "Type", widget: "string" }
+              - { name: "username", label: "Display name", widget: "string" }
+              - { name: "url", label: "Link", widget: "string" }
