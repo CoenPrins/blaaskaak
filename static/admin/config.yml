@@ -22,6 +22,10 @@ collections:
         hint: Page URL cannot be changed afterwards!
         name: title
         widget: string
+      - label: Layout
+        hidden: true
+        name: layout
+        default: page
       - label: Content
         name: body
         widget: markdown

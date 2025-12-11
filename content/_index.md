@@ -1,5 +1,6 @@
 ---
 title: Homepagina
+layout: home
 ---
 
 {{< calendar >}}
