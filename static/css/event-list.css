@@ -8,10 +8,6 @@
   list-style-type: none;
 }
 
-.scale-up-hover-list {
-  border-top: 1px solid var(--blaaskaak-red);
-  border-bottom: 1px solid var(--blaaskaak-red);
-}
 .scale-up-hover-list li {
   margin: 0;
   padding: .75em;

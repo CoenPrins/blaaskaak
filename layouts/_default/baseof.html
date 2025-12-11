@@ -29,20 +29,28 @@
 
 <body>
   <header>
-    <img src="/media/logo-slechte-kwali.png" alt="Logo Blaaskaak" id="logo">
+    <a href="/" aria-label="Homepage">
+      <img src="/media/logo-slechte-kwali.png" alt="Logo Blaaskaak" id="logo">
+    </a>
     <nav>
       <ol>
         {{- $currentPageURL := page.RelPermalink -}}
         {{ range site.Data.nav.nav }}
-        <li {{ if (eq $currentPageURL .page) -}}class="current" {{- end }}>
-          <a href="{{ .page }}">{{ .name }}</a>
+        <li
+            {{ if (eq $currentPageURL .page) -}}class="current"{{- end }}
+          >
+          <a
+              {{ if (eq $currentPageURL .page) -}}aria-current="page"{{- end }}
+              href="{{ .page }}">{{ .name }}</a>
         </li>
         {{- end }}
       </ol>
     </nav>
   </header>
 
+  <main>
   {{- block "content" . }}{{- end }}
+  </main>
 </body>
 
 </html>
