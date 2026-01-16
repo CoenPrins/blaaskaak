@@ -51,6 +51,7 @@ header {
       color: var(--text);
       font-weight: bold;
 
+
       &:not(:last-child) {
         padding-right: 2rem;
         border-right: 2px solid grey;
@@ -59,9 +60,12 @@ header {
       & a {
         text-decoration: none;
         text-transform: uppercase;
+        white-space: nowrap;
       }
 
       &.current a {
+        display: flex;
+
         &::before {
           display: inline-block;
           content: '→';
@@ -80,12 +84,17 @@ header {
 
 @media (max-width: 750px) {
   header {
-    justify-content: space-around;
+    justify-content: space-between;
     max-width: 90vw;
     margin: 0 auto;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 80vw;
   }
 
-  nav ol {
+  header nav ol {
+    margin: 0;
     flex-direction: column;
     gap: 0.6rem;
     padding: 1rem 1.5rem;
