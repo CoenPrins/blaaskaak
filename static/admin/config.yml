@@ -1,10 +1,10 @@
 backend:
   name: github
   repo: CoenPrins/blaaskaak
-  branch: admin-panel # TODO
+  branch: main
 media_folder: static/media
 public_folder: /media
-site_url: https://blaaskaak.nl # TODO?
+site_url: https://blaaskaak.nl
 display_url: https://blaaskaak.nl
 logo:
   src: https://blaaskaak.nl/media/logo-slechte-kwali.png
