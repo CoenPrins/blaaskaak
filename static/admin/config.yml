@@ -7,7 +7,7 @@ public_folder: /media
 site_url: https://blaaskaak.nl
 display_url: https://blaaskaak.nl
 logo:
-  src: https://blaaskaak.nl/media/logo-slechte-kwali.png
+  src: https://blaaskaak.nl/media/logo-round.webp
   show_in_header: true
 collections:
   - name: pages
@@ -16,19 +16,17 @@ collections:
     create: true
     editor:
       preview: false
-    folder: content
-    fields:
-      - label: Title (also becomes the URL)
-        hint: Page URL cannot be changed afterwards!
-        name: title
-        widget: string
-      - label: Layout
-        hidden: true
-        name: layout
-        default: page
-      - label: Content
-        name: body
-        widget: markdown
+    files:
+      - file: content/over-ons.md
+        name: over-ons
+        label: Over Ons
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: Layout, hidden: true, name: layout, default: page }
+          - { label: Text Coen, name: params.textCoen, widget: markdown }
+          - { label: Text Fabio, name: params.textFabio, widget: markdown }
+          - { label: Text Ivar, name: params.textIvar, widget: markdown }
+          - { label: Content, name: body, widget: markdown }
 
   - name: settings
     label: Site settings
@@ -49,9 +47,10 @@ collections:
         label: Basics
         name: basics
         fields:
-          - label: Icon
-            name: icon
-            widget: image
+          - { label: Logo, name: logo, widget: image }
+          - { label: Share logo, name: sharelogo, widget: image }
+          - { label: Short Description, name: shortDescription, widget: text }
+          - { label: Long Description, name: longDescription, widget: text }
       - file: data/socials.yml
         label: Socials
         name: socials

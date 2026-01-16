@@ -1,0 +1,37 @@
+<meta property="og:url" content="{{ .Permalink }}">
+
+{{- with or site.Title site.Params.title | plainify }}
+  <meta property="og:site_name" content="{{ . }}">
+{{- end }}
+
+{{- with or .Title site.Title site.Params.title | plainify }}
+  <meta property="og:title" content="{{ . }}">
+{{- end }}
+
+{{- with or .Description site.Data.basics.longDescription site.Params.description | plainify | htmlUnescape }}
+  <meta property="og:description" content="{{ trim . "\n\r\t " }}">
+{{- end }}
+
+{{- with or .Params.locale site.Language.LanguageCode }}
+  <meta property="og:locale" content="{{ replace . `-` `_` }}">
+{{- end }}
+
+<meta property="og:type" content="website">
+
+{{- with site.Data.basics.logo }}
+  <meta property="og:image" content="{{ . }}">
+{{- end }}
+
+{{- $images := partial "_funcs/get-page-images" . }}
+{{- with site.Data.basics.sharelogo }}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ . }}">
+{{- end }}
+
+{{- with or .Title site.Title | plainify }}
+  <meta name="twitter:title" content="{{ . }}">
+{{- end }}
+
+{{- with or .Description site.Data.basics.shortDescription | plainify | htmlUnescape }}
+  <meta name="twitter:description" content="{{ trim . "\n\r\t " }}">
+{{- end }}

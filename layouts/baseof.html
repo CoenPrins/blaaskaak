@@ -10,19 +10,13 @@
 
   <title>{{ if not .IsHome }}{{ .Path | humanize }} | {{ end }}{{ site.Title }}!</title>
 
-  {{ template "_internal/opengraph.html" . }}
+  {{ partial "seo.html" . }}
 
-  {{ template "_internal/twitter_cards.html" . }}
-
-  {{ template "_internal/schema.html" . }}
-
-
-  {{ with site.Params.favicon }}
+  {{ with site.Data.basics.logo }}
   <link rel="icon" href="{{ . }}">
   {{ end }}
 
   <link rel="canonical" href="{{ .Permalink }}">
-
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/event-list.css">
 </head>
@@ -30,7 +24,7 @@
 <body>
   <header>
     <a href="/" aria-label="Homepage">
-      <img src="/media/logo-slechte-kwali.png" alt="Logo Blaaskaak" id="logo">
+        <img src="{{ site.Data.basics.logo }}" alt="Logo Blaaskaak" id="logo">
     </a>
     <nav>
       <ol>
