@@ -1,6 +1,6 @@
 ---
 title: Homepagina
-layout: home
+layout: standby
 ---
 
 {{< calendar >}}
