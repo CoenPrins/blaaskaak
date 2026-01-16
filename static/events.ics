@@ -7,47 +7,23 @@ X-WR-CALNAME:OPENGIGS
 X-WR-TIMEZONE:Europe/Amsterdam
 X-WR-CALDESC:Formatting:
 BEGIN:VEVENT
-DTSTART:20250629T163000Z
-DTEND:20250629T223000Z
-DTSTAMP:20251209T155957Z
-UID:ccqjed32cpgj2b9i64pjab9kccrjcbb261h30bb3c8pm6p1l60sjacb1cg@google.com
-CREATED:20250226T145925Z
-DESCRIPTION:Lepeltje lepeltje utrecht\nLocatie:  Park Lepelenburg \nroute: 
- https://maps.app.goo.gl/hRhmikPruR1S2vr17 (1 uur rijden) \n\n\nParkeren: m.
-  Er is geen laden / lossen plek op het festival! Ook kan hier niet geparkee
- rd worden. \nWe kunnen ergens in de buurt parkeren\, miss is het zelfs hand
- ig om \nShowtime: 18:15 - 19:00 \neta: 17:00 (of eerder)\nVersterkt: ja \nE
- ten\; Ja munten \n\n\nContact stage: +31 6 37034936 \nContact nood: +31 6 4
- 1119138
-LAST-MODIFIED:20250626T233300Z
-SEQUENCE:5
+DTSTART:20240710T103000Z
+DTEND:20240710T160000Z
+DTSTAMP:20260116T120847Z
+UID:51p2jdlkc5461cecs6qqjduedq@google.com
+CREATED:20240710T142832Z
+DESCRIPTION:<a href="http://youtube.nl">koop </a><br><br>je ksstyjd!
+LAST-MODIFIED:20240710T143750Z
+LOCATION:Oudemanhuispoort\, 1012 CN Amsterdam\, Nederland
+SEQUENCE:0
 STATUS:CONFIRMED
-SUMMARY:lepeltje lepeltje Utrecht BEVESTIGD
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-DTSTART:20250831T141500Z
-DTEND:20250831T184500Z
-DTSTAMP:20251209T155957Z
-UID:6dj34chl6crj0b9ocos6cb9kcphj4bb264q68b9k6cr3ic3675gjed1m6k@google.com
-CREATED:20250423T213217Z
-DESCRIPTION:<strong>Wat is het: </strong> 11 jarig jubileum lepeltje lepelt
- je <br> Showtime: 18:00-19:00 (eten na optreden) <br>eta: 16:45 <br>verzame
- len pythagoras 16:15<br>versterkt: ja <br>eten: ja <br><br><br>ADRES:Smalle
- pad28\, Amersfoort (burgemeester brouwerplantsoen) <br>parkeren: in de buur
- t <br><b>route: </b><a href="https://maps.app.goo.gl/BVWWTZjysvJh7X7T7">htt
- ps://maps.app.goo.gl/BVWWTZjysvJh7X7T7</a><br>Contact: Femke van Boheemen +
- 31637034936
-LAST-MODIFIED:20250831T131408Z
-SEQUENCE:4
-STATUS:CONFIRMED
-SUMMARY:Lepeltje lepeltje lokaal Amersfoort
+SUMMARY:TEST OPENBARE GIG
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 DTSTART:20250510T150000Z
 DTEND:20250510T211500Z
-DTSTAMP:20251209T155957Z
+DTSTAMP:20260116T120847Z
 UID:cpijcc1k6gs62b9gcgq3ib9k6hi6cb9o6ksm6bb3cgoj0oj1cgpm4dr56o@google.com
 CREATED:20250307T142154Z
 DESCRIPTION:Wat is het: Fonteyn Wijnfestival\nWaar: Janskerkhof (net als bo
@@ -64,7 +40,7 @@ END:VEVENT
 BEGIN:VEVENT
 DTSTART:20250529T143000Z
 DTEND:20250529T203000Z
-DTSTAMP:20251209T155957Z
+DTSTAMP:20260116T120847Z
 UID:c5imad1j70q62b9hcph68b9k6phmcb9o70qjab9m64s3ep1i70p34pb2ck@google.com
 CREATED:20250223T104617Z
 DESCRIPTION:Wat is het: Kleinschalig festival bij alkmaar<br>Waar:  Alckmar
@@ -92,9 +68,31 @@ SUMMARY:Backyard festival Alkmaar BEVESTIGD
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
+DTSTART:20250530T133000Z
+DTEND:20250530T184500Z
+DTSTAMP:20260116T120847Z
+UID:ccs6cd1k70q3abb5ckq68b9k6orjib9oc4p3eb9n6th3acr3cdhm8phlc8@google.com
+CREATED:20250225T170131Z
+DESCRIPTION:Wat: lepeltje lepeltje zwolle<br>Waar: Park de Wezelanden 1 Zwo
+ lle<br>Versterkt: Ja<br>Showtime: 20:15 - 21:00<br>ETA: 18:15 <br>Verzamele
+ n 16:30 Utrecht <br>eten: Ja\, in de vorm van muntjes. <br>Route: <a href="
+ https://maps.app.goo.gl/zTD31K5C8Fxi4FYB7">https://maps.app.goo.gl/zTD31K5C
+ 8Fxi4FYB7</a> <br>parkeren: We adviseren om in de buurt te parkeren\, dat k
+ an eigenlijk altijd wel\, mocht je veel spullen hebben dan kan onze stagema
+ nager je helpen met uitladen. We hebben een platte kar tot onze beschikking
+  zodat we in 1 keer instrumenten kunnen vervoeren van auto naar podium. Er 
+ is geen laden / lossen plek op het festival! Ook kan hier niet geparkeerd w
+ orden.<br><br>contact persoon: Bente +31 6 41119138
+LAST-MODIFIED:20250527T155349Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:lepeltje lepeltje zwolle BEVESTIGD
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
 DTSTART:20250920T130000Z
 DTEND:20250920T170000Z
-DTSTAMP:20251209T155957Z
+DTSTAMP:20260116T120847Z
 UID:6dgj8c1jchi66bb464q30b9kchj3gb9p70q3ab9p6kr3iob460q66e1k60@google.com
 CREATED:20250627T172011Z
 DESCRIPTION:Buurtfeest binnentuinen <u></u>Lakenvelderstraat\, Utrecht<br><
@@ -113,7 +111,7 @@ END:VEVENT
 BEGIN:VEVENT
 DTSTART:20250608T130000Z
 DTEND:20250608T201500Z
-DTSTAMP:20251209T155957Z
+DTSTAMP:20260116T120847Z
 UID:coqm8dhn6op6ab9o6gq36b9k64sjib9o6ko68bb46kr3io9mccs66eb36k@google.com
 CREATED:20250226T150644Z
 DESCRIPTION:<p dir="ltr">Optreden 1: 17:15-18:00</p><p dir="ltr">Optreden 2
@@ -129,39 +127,41 @@ SUMMARY:Lepeltje lepeltje adam BEVESTIGD
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-DTSTART:20240710T103000Z
-DTEND:20240710T160000Z
-DTSTAMP:20251209T155957Z
-UID:51p2jdlkc5461cecs6qqjduedq@google.com
-CREATED:20240710T142832Z
-DESCRIPTION:<a href="http://youtube.nl">koop </a><br><br>je ksstyjd!
-LAST-MODIFIED:20240710T143750Z
-LOCATION:Oudemanhuispoort\, 1012 CN Amsterdam\, Nederland
-SEQUENCE:0
+DTSTART:20250629T163000Z
+DTEND:20250629T223000Z
+DTSTAMP:20260116T120847Z
+UID:ccqjed32cpgj2b9i64pjab9kccrjcbb261h30bb3c8pm6p1l60sjacb1cg@google.com
+CREATED:20250226T145925Z
+DESCRIPTION:Lepeltje lepeltje utrecht\nLocatie:  Park Lepelenburg \nroute: 
+ https://maps.app.goo.gl/hRhmikPruR1S2vr17 (1 uur rijden) \n\n\nParkeren: m.
+  Er is geen laden / lossen plek op het festival! Ook kan hier niet geparkee
+ rd worden. \nWe kunnen ergens in de buurt parkeren\, miss is het zelfs hand
+ ig om \nShowtime: 18:15 - 19:00 \neta: 17:00 (of eerder)\nVersterkt: ja \nE
+ ten\; Ja munten \n\n\nContact stage: +31 6 37034936 \nContact nood: +31 6 4
+ 1119138
+LAST-MODIFIED:20250626T233300Z
+SEQUENCE:5
 STATUS:CONFIRMED
-SUMMARY:TEST OPENBARE GIG
+SUMMARY:lepeltje lepeltje Utrecht BEVESTIGD
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-DTSTART:20250530T133000Z
-DTEND:20250530T184500Z
-DTSTAMP:20251209T155957Z
-UID:ccs6cd1k70q3abb5ckq68b9k6orjib9oc4p3eb9n6th3acr3cdhm8phlc8@google.com
-CREATED:20250225T170131Z
-DESCRIPTION:Wat: lepeltje lepeltje zwolle<br>Waar: Park de Wezelanden 1 Zwo
- lle<br>Versterkt: Ja<br>Showtime: 20:15 - 21:00<br>ETA: 18:15 <br>Verzamele
- n 16:30 Utrecht <br>eten: Ja\, in de vorm van muntjes. <br>Route: <a href="
- https://maps.app.goo.gl/zTD31K5C8Fxi4FYB7">https://maps.app.goo.gl/zTD31K5C
- 8Fxi4FYB7</a> <br>parkeren: We adviseren om in de buurt te parkeren\, dat k
- an eigenlijk altijd wel\, mocht je veel spullen hebben dan kan onze stagema
- nager je helpen met uitladen. We hebben een platte kar tot onze beschikking
-  zodat we in 1 keer instrumenten kunnen vervoeren van auto naar podium. Er 
- is geen laden / lossen plek op het festival! Ook kan hier niet geparkeerd w
- orden.<br><br>contact persoon: Bente +31 6 41119138
-LAST-MODIFIED:20250527T155349Z
-SEQUENCE:1
+DTSTART:20250831T141500Z
+DTEND:20250831T184500Z
+DTSTAMP:20260116T120847Z
+UID:6dj34chl6crj0b9ocos6cb9kcphj4bb264q68b9k6cr3ic3675gjed1m6k@google.com
+CREATED:20250423T213217Z
+DESCRIPTION:<strong>Wat is het: </strong> 11 jarig jubileum lepeltje lepelt
+ je <br> Showtime: 18:00-19:00 (eten na optreden) <br>eta: 16:45 <br>verzame
+ len pythagoras 16:15<br>versterkt: ja <br>eten: ja <br><br><br>ADRES:Smalle
+ pad28\, Amersfoort (burgemeester brouwerplantsoen) <br>parkeren: in de buur
+ t <br><b>route: </b><a href="https://maps.app.goo.gl/BVWWTZjysvJh7X7T7">htt
+ ps://maps.app.goo.gl/BVWWTZjysvJh7X7T7</a><br>Contact: Femke van Boheemen +
+ 31637034936
+LAST-MODIFIED:20250831T131408Z
+SEQUENCE:4
 STATUS:CONFIRMED
-SUMMARY:lepeltje lepeltje zwolle BEVESTIGD
+SUMMARY:Lepeltje lepeltje lokaal Amersfoort
 TRANSP:OPAQUE
 END:VEVENT
 END:VCALENDAR

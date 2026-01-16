@@ -14,7 +14,8 @@ body {
   background-color: var(--blaaskaak-white);
   color: var(--text);
   min-height: 100vh;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1500px;
 }
 
 header {
@@ -74,7 +75,7 @@ header {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
   header {
     justify-content: space-around;
     max-width: 90vw;
@@ -84,7 +85,7 @@ header {
   nav ol {
     flex-direction: column;
     gap: 0.6rem;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
     border-image-source: url('/media/scribble.svg');
@@ -92,11 +93,10 @@ header {
     border-image-repeat: stretch;
 
     & li {
-      padding: 0;
+      padding: 0 !important;
 
       &:not(:last-child) {
-        padding: 0;
-        border: none;
+        border: none !important;
       }
     }
   }
@@ -163,6 +163,23 @@ form {
   & textarea:focus {
     border-color: var(--blaaskaak-red);
     outline: 0;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px var(--color-blue);
   }
+
+  & button {
+    padding: 10px 15px;
+    border: none;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    gap: 5px;
+    /* border: 1px solid black; */
+    background-color: color-mix(in srgb, beige 60%, black 40%);
+    border-radius: 6px;
+
+    &:hover {
+      filter: brightness(1.25);
+      cursor: pointer;
+    }
+  }
+
 }
